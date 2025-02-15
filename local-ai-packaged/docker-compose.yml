@@ -43,7 +43,7 @@ x-init-ollama: &init-ollama
   entrypoint: /bin/sh
   command:
     - "-c"
-    - "sleep 3; OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-coder-v2-tool-calling:latest; OLLAMA_HOST=ollama:11434 ollama pull nomic-embed-text;OLLAMA_HOST=ollama:11434 ollama pull thirdeyeai/DeepSeek-R1-Distill-Qwen-7B-uncensored:latest"
+    - "sleep 3; OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-coder-v2-tool-calling:latest; OLLAMA_HOST=ollama:11434 ollama pull nomic-embed-text;OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-r1-tool-calling:8b"
 
 services:
   flowise:
