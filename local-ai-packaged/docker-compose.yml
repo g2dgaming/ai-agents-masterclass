@@ -43,7 +43,7 @@ x-init-ollama: &init-ollama
   entrypoint: /bin/sh
   command:
     - "-c"
-    - "sleep 3; OLLAMA_HOST=ollama:11434 ollama pull deepseek-coder-v2-tool-calling:16b; OLLAMA_HOST=ollama:11434 ollama pull nomic-embed-text"
+    - "sleep 3; OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-coder-v2-tool-calling:latest; OLLAMA_HOST=ollama:11434 ollama pull nomic-embed-text"
 
 services:
   flowise:
@@ -114,6 +114,8 @@ services:
       - n8n_storage:/home/node/.n8n
       - ./n8n/backup:/backup
       - ./shared:/data/shared
+    environment:
+      - N8N_SECURE_COOKIE=${N8N_SECURE_COOKIE}
     depends_on:
       postgres:
         condition: service_healthy
