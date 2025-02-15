@@ -132,6 +132,25 @@ services:
     volumes:
       - qdrant_storage:/qdrant/storage
 
+  deepspeech-stt:
+    image: romainsah/deepspeech-server:latest
+    container_name: deepspeech-stt
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./deepspeech-models:/opt/deepspeech
+    command: [ "deepspeech_server", "--config", "/opt/deepspeech/config.json" ]
+
+  melotts-tts:
+    image: timhagel/melotts-api-server:latest
+    container_name: melotts-tts
+    ports:
+      - "8888:8080"
+    environment:
+      - DEFAULT_SPEED=1
+      - DEFAULT_LANGUAGE=EN
+      - DEFAULT_SPEAKER_ID=EN-Default
+
   ollama-cpu:
     profiles: ["cpu"]
     <<: *service-ollama
