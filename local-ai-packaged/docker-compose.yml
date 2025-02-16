@@ -137,7 +137,7 @@ services:
     environment:
       - N8N_AGENT_URL=http://n8n:5678/webhook/speech-processing
       - TTS_URL=http://melotts-tts:8080/tts
-      - STT_URL=http://faster-whisper-stt:8080/transcribe
+      - STT_URL=http://faster-whisper-stt:8080/api/transcribe
     depends_on:
       - n8n
       - melotts-tts
@@ -163,7 +163,8 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Asia/Kolkata
-      - MODEL=large-v3  # Best accuracy, change to small/base for speed
+      - WHISPER_MODEL=tiny-int8
+      - WHISPER_LANG=en #optional
       - COMPUTE_TYPE=float16  # Use float16 for best GPU performance
       - CUDA_VISIBLE_DEVICES=0  # Use first GPU (change if needed)
     volumes:
