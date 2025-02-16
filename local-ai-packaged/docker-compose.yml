@@ -135,11 +135,11 @@ services:
     environment:
       - N8N_AGENT_URL=http://n8n:5678/webhook/speech-processing
       - TTS_URL=http://melotts-tts:8080/tts
-      - STT_URL=http://deepspeech-stt:8080/stt
+      - STT_URL=http://whisper-stt:8080/stt
     depends_on:
       - n8n
       - melotts-tts
-      - deepspeech-stt
+      - whisper-stt
 
   qdrant:
     image: qdrant/qdrant
@@ -151,14 +151,24 @@ services:
     volumes:
       - qdrant_storage:/qdrant/storage
 
-  deepspeech-stt:
-    image: romainsah/deepspeech-server:latest
-    container_name: deepspeech-stt
+  whisper-stt:
+    image: ghcr.io/ggerganov/whisper.cpp:latest
+    container_name: whisper-stt
+    networks: ['demo']
+    restart: unless-stopped
     ports:
       - "8080:8080"
     volumes:
-      - ./deepspeech-models:/opt/deepspeech
-    command: [ "deepspeech_server"]
+      - ./whisper-models:/models
+    command: ["/app/server", "-m", "/models/ggml-large.bin", "--port", "8080"]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
 
   melotts-tts:
     image: timhagel/melotts-api-server:latest
