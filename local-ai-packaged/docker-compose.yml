@@ -123,25 +123,25 @@ services:
       n8n-import:
         condition: service_completed_successfully
 
-  speech-agent:
-    image: python:3.10-slim
-    container_name: speech-agent
+  ovos-assistant:
+    image: ghcr.io/openvoiceos/ovos-docker:latest
+    container_name: ovos-assistant
     networks: ['demo']
     restart: unless-stopped
-    volumes:
-      - ./speech-agent:/app
-    working_dir: /app
-    ports:
-      - "5001:5001"
-    command: ["/bin/sh", "-c", "pip install -r requirements.txt && python main.py"]
     environment:
-      - N8N_AGENT_URL=http://n8n:5678/webhook/speech-processing
+      - STT_URL=http://faster-whisper-stt:5000/api/transcribe
       - TTS_URL=http://melotts-tts:8080/tts
-      - STT_URL=http://faster-whisper-stt:10300/api/transcribe
+      - LLM_URL=http://ollama:11434/api/generate
+      - N8N_WEBHOOK=http://n8n:5678/webhook/voice-command
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./ovos-config:/root/.config/mycroft
     depends_on:
-      - n8n
-      - melotts-tts
       - faster-whisper-stt
+      - melotts-tts
+      - n8n
+
 
   qdrant:
     image: qdrant/qdrant
