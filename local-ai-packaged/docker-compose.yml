@@ -121,6 +121,23 @@ services:
         condition: service_healthy
       n8n-import:
         condition: service_completed_successfully
+  speech-agent:
+    image: python:3.10-slim
+    container_name: speech-agent
+    networks: ['demo']
+    restart: unless-stopped
+    volumes:
+      - ./speech-agent:/app
+    working_dir: /app
+    command: ["python", "main.py"]
+    environment:
+      - STT_URL=http://deepspeech-stt:8080/stt
+      - N8N_WEBHOOK_URL=http://n8n:5678/webhook/speech-processing
+      - TTS_URL=http://melotts-tts:8080/tts
+    depends_on:
+      - deepspeech-stt
+      - n8n
+      - melotts-tts
 
   qdrant:
     image: qdrant/qdrant
@@ -157,8 +174,12 @@ services:
 
   ollama-gpu:
     profiles: ["gpu-nvidia"]
+    privileged: true
     runtime: nvidia
     <<: *service-ollama
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
     deploy:
       resources:
         reservations:
