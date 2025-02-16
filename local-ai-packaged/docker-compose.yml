@@ -129,13 +129,17 @@ services:
     volumes:
       - ./speech-agent:/app
     working_dir: /app
+    ports:
+      - "5001:5001"
     command: ["/bin/sh", "-c", "pip install -r requirements.txt && python main.py"]
     environment:
       - N8N_AGENT_URL=http://n8n:5678/webhook/speech-processing
       - TTS_URL=http://melotts-tts:8080/tts
+      - STT_URL=http://deepspeech-stt:8080/stt
     depends_on:
       - n8n
       - melotts-tts
+      - deepspeech-stt
 
   qdrant:
     image: qdrant/qdrant
