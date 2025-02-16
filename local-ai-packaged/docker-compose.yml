@@ -3,8 +3,9 @@ volumes:
   postgres_storage:
   ollama_storage:
   qdrant_storage:
-  open-webui:
-  flowise:
+  open-webui_storage:
+  flowise_storage:
+  whisper_cache:
 
 networks:
   demo:
@@ -56,9 +57,9 @@ services:
     ports:
         - "3001:3001"
     extra_hosts:
-      - "host.docker.internal:host-gateway"        
+      - "host.docker.internal:host-gateway"
     volumes:
-        - ~/.flowise:/root/.flowise
+        - flowise_storage:/root/.flowise
     entrypoint: /bin/sh -c "sleep 3; flowise start"
 
   open-webui:
@@ -71,7 +72,7 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
-      - open-webui:/app/backend/data
+      - open-webui_storage:/app/backend/data
 
   postgres:
     image: postgres:16-alpine
@@ -121,6 +122,7 @@ services:
         condition: service_healthy
       n8n-import:
         condition: service_completed_successfully
+
   speech-agent:
     image: python:3.10-slim
     container_name: speech-agent
@@ -135,11 +137,11 @@ services:
     environment:
       - N8N_AGENT_URL=http://n8n:5678/webhook/speech-processing
       - TTS_URL=http://melotts-tts:8080/tts
-      - STT_URL=http://whisper-stt:8080/stt
+      - STT_URL=http://faster-whisper-stt:8080/transcribe
     depends_on:
       - n8n
       - melotts-tts
-      - whisper-stt
+      - faster-whisper-stt
 
   qdrant:
     image: qdrant/qdrant
@@ -151,30 +153,29 @@ services:
     volumes:
       - qdrant_storage:/qdrant/storage
 
-  whisper-stt:
-    image: ghcr.io/ggerganov/whisper.cpp:latest
-    container_name: whisper-stt
+  faster-whisper-stt:
+    image: lscr.io/linuxserver/faster-whisper:latest
+    container_name: faster-whisper-stt
     networks: ['demo']
     restart: unless-stopped
-    ports:
-      - "8080:8080"
+    runtime: nvidia  # Enable GPU
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kolkata
+      - MODEL=large-v3  # Best accuracy, change to small/base for speed
+      - COMPUTE_TYPE=float16  # Use float16 for best GPU performance
+      - CUDA_VISIBLE_DEVICES=0  # Use first GPU (change if needed)
     volumes:
-      - ./whisper-models:/models
-    command: ["/app/server", "-m", "/models/ggml-large.bin", "--port", "8080"]
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: all
-              capabilities: [gpu]
-
+      - whisper_cache:/config/models
 
   melotts-tts:
     image: timhagel/melotts-api-server:latest
     container_name: melotts-tts
+    networks: ['demo']
+    restart: unless-stopped
     ports:
-      - "8888:8080"
+      - "8080:8080"  # Fixed port mapping
     environment:
       - DEFAULT_SPEED=1
       - DEFAULT_LANGUAGE=EN
