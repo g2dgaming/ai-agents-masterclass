@@ -137,7 +137,7 @@ services:
     environment:
       - N8N_AGENT_URL=http://n8n:5678/webhook/speech-processing
       - TTS_URL=http://melotts-tts:8080/tts
-      - STT_URL=http://faster-whisper-stt:8080/api/transcribe
+      - STT_URL=http://faster-whisper-stt:10300/api/transcribe
     depends_on:
       - n8n
       - melotts-tts
