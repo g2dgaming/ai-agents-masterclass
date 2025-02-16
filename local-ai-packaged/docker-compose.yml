@@ -157,6 +157,7 @@ services:
 
   ollama-gpu:
     profiles: ["gpu-nvidia"]
+    runtime: nvidia
     <<: *service-ollama
     deploy:
       resources:
