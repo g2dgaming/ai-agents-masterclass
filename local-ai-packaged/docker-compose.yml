@@ -224,6 +224,13 @@ services:
       - "--snd-uri"
       - "tcp://playback:10601"
       - "--debug"
+  openwakeword:
+    image: "wyoming-openwakeword"
+    container_name: openwakeword
+    ports:
+      - "10400:10400"
+    networks:
+      - demo
   homeassistant:
     container_name: homeassistant
     image: "ghcr.io/home-assistant/home-assistant:stable"
