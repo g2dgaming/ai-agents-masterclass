@@ -140,16 +140,15 @@ services:
     container_name: faster-whisper-stt
     networks: ['demo']
     restart: unless-stopped
-    runtime: nvidia  # Enable GPU
     ports:
       - "10300:10300"
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Asia/Kolkata
-      - WHISPER_MODEL=tiny-int8
+      - WHISPER_MODEL=medium.en
       - WHISPER_LANG=en #optional
-      - COMPUTE_TYPE=float16  # Use float16 for best GPU performance
+      - COMPUTE_TYPE=int8  # Use float16 for best GPU performance
       - CUDA_VISIBLE_DEVICES=0  # Use first GPU (change if needed)
     volumes:
       - whisper_cache:/config/models
@@ -182,6 +181,8 @@ services:
   satellite:
     image: "wyoming-satellite"
     container_name: satellite
+    devices:
+      - /dev/snd:/dev/snd
     ports:
       - "10700:10700"
     networks:
