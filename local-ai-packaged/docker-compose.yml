@@ -179,12 +179,15 @@ services:
       - /opt/portainer:/data
 
   satellite:
-    image: "wyoming-satellite"
+    image: "wyoming-satellite:latest"
     container_name: satellite
     build:
       context: ./wyoming-satellite
     devices:
       - /dev/snd:/dev/snd
+    group_add:
+      - audio
+    privileged: true
     ports:
       - "10700:10700"
     networks:
