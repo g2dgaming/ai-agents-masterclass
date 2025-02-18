@@ -163,6 +163,7 @@ services:
       - demo
     environment:
       - TTS_LANG=en
+    entrypoint: ["python3", "TTS/server/server.py", "--model_name", "tts_models/en/ljspeech/tacotron2-DDC", "--use_cuda", "false"]
     volumes:
       - /opt/coqui-tts-data:/data
   portainer:
@@ -184,6 +185,8 @@ services:
       - /etc/localtime:/etc/localtime:ro
     restart: unless-stopped
     privileged: true
+    ports:
+      - "8123:8123"
     networks:
       - demo
   ollama-cpu:
