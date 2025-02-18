@@ -181,6 +181,8 @@ services:
   satellite:
     image: "wyoming-satellite"
     container_name: satellite
+    build:
+      context: ./wyoming-satellite
     devices:
       - /dev/snd:/dev/snd
     ports:
@@ -190,6 +192,8 @@ services:
   openwakeword:
     image: "wyoming-openwakeword"
     container_name: openwakeword
+    build:
+      context: ./wyoming-openwakeword
     ports:
       - "10400:10400"
     networks:
@@ -206,6 +210,11 @@ services:
       - "8123:8123"
     networks:
       - demo
+    depends_on:
+      - openwakeword
+      - satellite
+      - coqui-tts
+      - faster-whisper-stt
   ollama-cpu:
     profiles: ["cpu"]
     <<: *service-ollama
