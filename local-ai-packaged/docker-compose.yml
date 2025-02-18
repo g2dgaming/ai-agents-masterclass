@@ -154,18 +154,29 @@ services:
       - whisper_cache:/config/models
 
   coqui-tts:
-    image: ghcr.io/coqui-ai/tts-cpu:latest
+    image: ghcr.io/coqui-ai/tts:latest
     container_name: coqui-tts
     ports:
       - "5002:5002"
     restart: unless-stopped
+    privileged: true
     networks:
       - demo
-    environment:
-      - TTS_LANG=en
-    entrypoint: ["python3", "TTS/server/server.py", "--model_name", "tts_models/en/ljspeech/tacotron2-DDC", "--use_cuda", "false"]
+    runtime: nvidia
+    entrypoint: ["python3", "TTS/server/server.py", "--model_name","tts_models/en/ljspeech/glow-tts", "--use_cuda", "true"]
     volumes:
       - /opt/coqui-tts-data:/data
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+      - TTS_LANG=en
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
   portainer:
     container_name: portainer
     image: portainer/portainer-ce
