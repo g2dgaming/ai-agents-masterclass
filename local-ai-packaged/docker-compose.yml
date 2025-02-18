@@ -123,25 +123,6 @@ services:
       n8n-import:
         condition: service_completed_successfully
 
-  ovos-assistant:
-    image: ghcr.io/openvoiceos/ovos-docker:latest
-    container_name: ovos-assistant
-    networks: ['demo']
-    restart: unless-stopped
-    environment:
-      - STT_URL=http://faster-whisper-stt:5000/api/transcribe
-      - TTS_URL=http://melotts-tts:8080/tts
-      - LLM_URL=http://ollama:11434/api/generate
-      - N8N_WEBHOOK=http://n8n:5678/webhook/voice-command
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./ovos-config:/root/.config/mycroft
-    depends_on:
-      - faster-whisper-stt
-      - melotts-tts
-      - n8n
-
 
   qdrant:
     image: qdrant/qdrant
@@ -181,7 +162,26 @@ services:
       - DEFAULT_SPEED=1
       - DEFAULT_LANGUAGE=EN
       - DEFAULT_SPEAKER_ID=EN-Default
-
+  portainer:
+    container_name: portainer
+    image: portainer/portainer-ce
+    restart: always
+    ports:
+      - "9000:9000/tcp"
+    environment:
+      - TZ=Europe/London
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /opt/portainer:/data
+  homeassistant:
+    container_name: homeassistant
+    image: "ghcr.io/home-assistant/home-assistant:stable"
+    volumes:
+      - /opt/homeassistant/config:/config
+      - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
   ollama-cpu:
     profiles: ["cpu"]
     <<: *service-ollama
