@@ -179,7 +179,7 @@ services:
       - /opt/portainer:/data
 
   microphone:
-      image: "r2hasspy/wyoming-mic-external"
+      image: "wyoming-mic-external"
       ports:
         - "10600:10600"
       devices:
@@ -191,7 +191,7 @@ services:
         - "plughw:CARD=Snowball,DEV=0"
         - "--debug"
   playback:
-    image: "rhasspy/wyoming-snd-external"
+    image: "wyoming-snd-external"
     ports:
       - "10601:10601"
     devices:
@@ -203,7 +203,7 @@ services:
       - "plughw:CARD=Generic,DEV=0"
       - "--debug"
   satellite:
-    image: "rhasspy/wyoming-satellite"
+    image: "wyoming-satellite"
     ports:
       - "10700:10700"
     command:
