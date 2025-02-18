@@ -78,6 +78,7 @@ services:
     image: postgres:16-alpine
     networks: ['demo']
     restart: unless-stopped
+    container_name: postgres
     ports:
       - "5432:5432"
     environment:
@@ -180,10 +181,13 @@ services:
 
   microphone:
       image: "wyoming-mic-external"
+      container_name: microphone
       ports:
         - "10600:10600"
       devices:
         - /dev/snd:/dev/snd
+      networks:
+        - demo
       group_add:
         - audio
       command:
@@ -192,8 +196,11 @@ services:
         - "--debug"
   playback:
     image: "wyoming-snd-external"
+    container_name: playback
     ports:
       - "10601:10601"
+    networks:
+      - demo
     devices:
       - /dev/snd:/dev/snd
     group_add:
@@ -204,8 +211,11 @@ services:
       - "--debug"
   satellite:
     image: "wyoming-satellite"
+    container_name: satellite
     ports:
       - "10700:10700"
+    networks:
+      - demo
     command:
       - "--name"
       - "my satellite"
