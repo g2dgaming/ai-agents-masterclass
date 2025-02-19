@@ -1,11 +1,11 @@
 volumes:
   n8n_storage:
   postgres_storage:
-  ollama_storage:
   qdrant_storage:
   open-webui_storage:
   flowise_storage:
   whisper_cache:
+  coqui_tts_storage:
 
 networks:
   demo:
@@ -33,18 +33,18 @@ x-ollama: &service-ollama
   ports:
     - 11434:11434
   volumes:
-    - ollama_storage:/root/.ollama
+    - /home/samarth/samsung_t7/ollama:/root/.ollama
 
 x-init-ollama: &init-ollama
   image: ollama/ollama:latest
   networks: ['demo']
   container_name: ollama-pull-llama
   volumes:
-    - ollama_storage:/root/.ollama
+    - /home/samarth/samsung_t7/ollama:/root/.ollama
   entrypoint: /bin/sh
   command:
     - "-c"
-    - "sleep 3; OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-coder-v2-tool-calling:latest; OLLAMA_HOST=ollama:11434 ollama pull nomic-embed-text;OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-r1-tool-calling:8b"
+    - "sleep 3; OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-coder-v2-tool-calling:latest; OLLAMA_HOST=ollama:11434 ollama pull nomic-embed-text;OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-r1-tool-calling:8b;OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-r1-tool-calling:14bb;OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-r1-tool-calling:32b;OLLAMA_HOST=ollama:11434 ollama run qwen2.5:32b"
 
 services:
   flowise:
@@ -156,19 +156,18 @@ services:
   coqui-tts:
     image: ghcr.io/coqui-ai/tts:latest
     container_name: coqui-tts
+    privileged: true
     ports:
       - "5002:5002"
     restart: unless-stopped
-    privileged: true
+    runtime:
+      nvidia
     networks:
       - demo
-    runtime: nvidia
-    entrypoint: ["python3", "TTS/server/server.py", "--model_name","tts_models/en/ljspeech/glow-tts", "--use_cuda", "true"]
+    entrypoint: ["python3", "TTS/server/server.py", "--model_name","tts_models/en/ljspeech/vits--neon", "--use_cuda", "true"]
     volumes:
-      - /opt/coqui-tts-data:/data
+      - coqui_tts_storage:/data
     environment:
-      - NVIDIA_VISIBLE_DEVICES=all
-      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
       - TTS_LANG=en
     deploy:
       resources:
