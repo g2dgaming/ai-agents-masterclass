@@ -44,7 +44,7 @@ x-init-ollama: &init-ollama
   entrypoint: /bin/sh
   command:
     - "-c"
-    - "sleep 3; OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-coder-v2-tool-calling:latest; OLLAMA_HOST=ollama:11434 ollama pull nomic-embed-text;OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-r1-tool-calling:8b;OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-r1-tool-calling:14bb;OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-r1-tool-calling:32b;OLLAMA_HOST=ollama:11434 ollama run qwen2.5:32b"
+    - "sleep 3; OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-coder-v2-tool-calling:latest; OLLAMA_HOST=ollama:11434 ollama pull nomic-embed-text;OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-r1-tool-calling:8b;OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-r1-tool-calling:14bb;OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-r1-tool-calling:32b;OLLAMA_HOST=ollama:11434 ollama run qwen2.5:32b;OLLAMA_HOST=ollama:11434 ollama pull rns96/deepseek-R1-ablated:f32_Q80"
 
 services:
   flowise:
