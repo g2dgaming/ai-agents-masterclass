@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "minor_version": 2,
+  "key": "core.label_registry",
+  "data": {
+    "labels": [
+      {
+        "color": "white",
+        "description": null,
+        "icon": "mdi:account",
+        "label_id": "jarvis_satellite",
+        "name": "Jarvis Satellite",
+        "created_at": "2025-02-19T08:54:30.830291+00:00",
+        "modified_at": "2025-02-19T08:54:30.830295+00:00"
+      }
+    ]
+  }
+}

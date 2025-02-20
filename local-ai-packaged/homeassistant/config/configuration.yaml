@@ -9,12 +9,14 @@ tts:
     host: coqui-tts
     port: 5002
 
+assist_pipeline:
+  pipeline:
+    name: "N8N Pipeline"
+    language: "en"
+    conversation_agent_id: "n8n_assist_agent"
 
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
-
-
-# configuration.yaml
 
 

@@ -1,0 +1,1 @@
+2025-02-20 10:39:57.564 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration n8n_conversation which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant

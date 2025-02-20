@@ -1,0 +1,50 @@
+2025-02-20 10:38:15.894 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration n8n_conversation which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
+2025-02-20 10:38:16.343 WARNING (Recorder) [homeassistant.components.recorder.util] The system could not validate that the sqlite3 database at //config/home-assistant_v2.db was shutdown cleanly
+2025-02-20 10:38:16.358 WARNING (Recorder) [homeassistant.components.recorder.util] Ended unfinished session (id=85 from 2025-02-20 10:21:12.166553)
+2025-02-20 10:38:17.102 ERROR (MainThread) [homeassistant.config] Invalid config for 'conversation' at configuration.yaml, line 13: 'language' is an invalid option for 'conversation', check: conversation->language, please check the docs at https://www.home-assistant.io/integrations/conversation
+Invalid config for 'conversation' at configuration.yaml, line 14: 'agent_id' is an invalid option for 'conversation', check: conversation->agent_id, please check the docs at https://www.home-assistant.io/integrations/conversation
+2025-02-20 10:38:17.102 ERROR (MainThread) [homeassistant.setup] Setup failed for 'conversation': Invalid config.
+2025-02-20 10:38:17.103 ERROR (MainThread) [homeassistant.setup] Unable to set up dependencies of 'assist_pipeline'. Setup failed for dependencies: ['conversation']
+2025-02-20 10:38:17.103 ERROR (MainThread) [homeassistant.setup] Setup failed for 'assist_pipeline': Could not setup dependencies: conversation
+2025-02-20 10:38:17.103 ERROR (MainThread) [homeassistant.setup] Unable to set up dependencies of 'assist_satellite'. Setup failed for dependencies: ['assist_pipeline']
+2025-02-20 10:38:17.103 ERROR (MainThread) [homeassistant.setup] Setup failed for 'assist_satellite': Could not setup dependencies: assist_pipeline
+2025-02-20 10:38:17.111 ERROR (MainThread) [homeassistant.setup] Unable to set up dependencies of 'ollama'. Setup failed for dependencies: ['conversation']
+2025-02-20 10:38:17.111 ERROR (MainThread) [homeassistant.setup] Setup failed for 'ollama': Could not setup dependencies: conversation
+2025-02-20 10:38:17.116 ERROR (MainThread) [homeassistant.setup] Unable to set up dependencies of 'wyoming'. Setup failed for dependencies: ['assist_satellite', 'assist_pipeline', 'conversation']
+2025-02-20 10:38:17.116 ERROR (MainThread) [homeassistant.setup] Setup failed for 'wyoming': Could not setup dependencies: assist_satellite, assist_pipeline, conversation
+2025-02-20 10:38:17.313 ERROR (MainThread) [homeassistant.setup] Unable to set up dependencies of 'default_config'. Setup failed for dependencies: ['assist_pipeline', 'conversation']
+2025-02-20 10:38:17.313 ERROR (MainThread) [homeassistant.setup] Setup failed for 'default_config': Could not setup dependencies: assist_pipeline, conversation
+2025-02-20 10:38:18.882 ERROR (MainThread) [homeassistant.setup] Unable to set up dependencies of 'wyoming'. Setup failed for dependencies: ['assist_satellite', 'assist_pipeline', 'conversation']
+2025-02-20 10:38:18.910 ERROR (SyncWorker_0) [homeassistant] Error doing job: Task exception was never retrieved (None)
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/helpers/discovery_flow.py", line 137, in _async_start
+    await gather_with_limited_concurrency(FLOW_INIT_LIMIT, *init_coros)
+  File "/usr/src/homeassistant/homeassistant/util/async_.py", line 114, in gather_with_limited_concurrency
+    return await gather(
+           ^^^^^^^^^^^^^
+    ...<2 lines>...
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/util/async_.py", line 112, in sem_task
+    return await task
+           ^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/config_entries.py", line 1309, in async_init
+    flow, result = await self._async_init(flow_id, handler, context, data)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/config_entries.py", line 1334, in _async_init
+    flow = await self.async_create_flow(handler, context=context, data=data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/config_entries.py", line 1530, in async_create_flow
+    handler = await _async_get_flow_handler(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.hass, handler_key, self._hass_config
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/config_entries.py", line 3327, in _async_get_flow_handler
+    await _load_integration(hass, domain, hass_config)
+  File "/usr/src/homeassistant/homeassistant/config_entries.py", line 3304, in _load_integration
+    await async_process_deps_reqs(hass, hass_config, integration)
+  File "/usr/src/homeassistant/homeassistant/setup.py", line 578, in async_process_deps_reqs
+    raise DependencyError(failed_deps)
+homeassistant.exceptions.DependencyError: Could not setup dependencies: assist_satellite, assist_pipeline, conversation

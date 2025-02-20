@@ -1,9 +1,9 @@
 {
   "domain": "n8n_conversation_agent",
   "name": "n8n Conversation Agent",
-  "version": "2025.1",
-  "documentation": "https://github.com/yourusername/n8n_conversation",
+  "version": "1.0",
+  "documentation": "https://www.home-assistant.io/integrations/assist_pipeline",
   "dependencies": [],
-  "codeowners": ["@yourusername"],
-  "requirements": ["requests"]
+  "codeowners": ["@your-github-username"],
+  "requirements": []
 }

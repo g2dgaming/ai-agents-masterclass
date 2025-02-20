@@ -1,2 +1,3 @@
 DOMAIN = "n8n_conversation_agent"
-DEFAULT_WEBHOOK_URL = "http://n8n:5678/webhook/converse"
+WEBHOOK_URL = "https://your-n8n-instance/webhook/converse"
+AGENT_ID = "n8n_assist_agent"
