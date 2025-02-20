@@ -81,7 +81,7 @@ class N8NConversationEntity(
         except Exception as err:
             _LOGGER.error("Error communicating with n8n: %s", err)
             return conversation.ConversationResult(
-                response=intent.IntentResponse(language=user_input.language, speech="Error contacting n8n."),
+                response=intent.IntentResponse(language=user_input.language),
                 conversation_id=user_input.conversation_id,
             )
 
@@ -95,10 +95,12 @@ class N8NConversationEntity(
         """Send user query to n8n webhook and return response."""
         try:
             response = requests.post(
-                webhook_url, json={"message": query}, timeout=10
+                webhook_url, json={"message": query}, timeout=300
             )
             response.raise_for_status()
-            return response.json().get("response", "No response from n8n.")
+            _LOGGER.info(response.json());
+            return response.json().get("output", "Internal error.")
+
         except requests.RequestException as err:
             _LOGGER.error("Request to n8n failed: %s", err)
             return "Error communicating with n8n."
