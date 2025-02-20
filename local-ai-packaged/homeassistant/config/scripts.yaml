@@ -1,0 +1,11 @@
+# scripts.yaml
+handle_n8n_query:
+  description: "Send query to n8n webhook and process response"
+  fields:
+    query:
+      description: "The user's query"
+      example: "What's the weather today?"
+  sequence:
+    - service: rest_command.send_to_n8n
+      data:
+        query: "{{ query }}"
