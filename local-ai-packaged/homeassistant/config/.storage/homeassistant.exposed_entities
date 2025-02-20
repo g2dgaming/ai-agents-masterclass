@@ -32,6 +32,13 @@
             "should_expose": false
           }
         }
+      },
+      "conversation.unnamed_device": {
+        "assistants": {
+          "conversation": {
+            "should_expose": false
+          }
+        }
       }
     }
   }

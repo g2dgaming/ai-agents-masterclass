@@ -20,7 +20,7 @@
         "prefer_local_intents": false
       },
       {
-        "conversation_engine": "conversation.home_assistant",
+        "conversation_engine": "conversation.conversation_n8n",
         "conversation_language": "en",
         "id": "01jmbxqa88gwyemnd056p3vykb",
         "language": "en",

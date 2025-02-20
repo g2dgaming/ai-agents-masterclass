@@ -1,16 +1,77 @@
-2025-02-20 12:09:51.888 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration n8n_conversation_agent which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
-2025-02-20 12:09:52.335 WARNING (Recorder) [homeassistant.components.recorder.util] The system could not validate that the sqlite3 database at //config/home-assistant_v2.db was shutdown cleanly
-2025-02-20 12:09:52.354 WARNING (Recorder) [homeassistant.components.recorder.util] Ended unfinished session (id=95 from 2025-02-20 12:07:45.764943)
-2025-02-20 12:09:53.809 WARNING (MainThread) [homeassistant.helpers.frame] Detected that custom integration 'n8n_conversation_agent' accesses hass.components.conversation, which should be updated to import functions used from conversation directly at custom_components/n8n_conversation_agent/__init__.py, line 22: hass.components.conversation.async_set_agent(hass, agent). This will stop working in Home Assistant 2025.3, please report it to the author of the 'n8n_conversation_agent' custom integration
-2025-02-20 12:09:53.809 ERROR (MainThread) [homeassistant.setup] Error during setup of component n8n_conversation_agent: 'HomeAssistant' object has no attribute 'entry_id'
+2025-02-20 16:31:10.162 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration n8n_conversation_agent which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
+2025-02-20 16:31:10.630 WARNING (Recorder) [homeassistant.components.recorder.util] The system could not validate that the sqlite3 database at //config/home-assistant_v2.db was shutdown cleanly
+2025-02-20 16:31:10.688 WARNING (Recorder) [homeassistant.components.recorder.util] Ended unfinished session (id=120 from 2025-02-20 16:29:06.131302)
+2025-02-20 16:31:12.050 WARNING (MainThread) [homeassistant.helpers.frame] Detected that custom integration 'n8n_conversation_agent' calls async_forward_entry_setup for integration, n8n_conversation_agent with title: ttt and entry_id: 01JMJ32CPPV2A6B8VCZ2GES24R, which is deprecated, await async_forward_entry_setups instead at custom_components/n8n_conversation_agent/__init__.py, line 17: hass.async_create_task(. This will stop working in Home Assistant 2025.6, please report it to the author of the 'n8n_conversation_agent' custom integration
+2025-02-20 16:31:12.253 WARNING (MainThread) [homeassistant.util.loop] Detected blocking call to import_module with args ('custom_components.n8n_conversation_agent.conversation',) in /usr/src/homeassistant/homeassistant/loader.py, line 1304: return importlib.import_module(f"{self.pkg_path}.{platform_name}") inside the event loop; This is causing stability issues. Please create a bug report at https://github.com/home-assistant/core/issues?q=is%3Aopen+is%3Aissue
+For developers, please see https://developers.home-assistant.io/docs/asyncio_blocking_operations/#import_module
 Traceback (most recent call last):
-  File "/usr/src/homeassistant/homeassistant/setup.py", line 422, in _async_setup_component
-    result = await task
-             ^^^^^^^^^^
-  File "/config/custom_components/n8n_conversation_agent/__init__.py", line 22, in async_setup
-    hass.components.conversation.async_set_agent(hass, agent)
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/components/conversation/__init__.py", line 125, in async_set_agent
-    get_agent_manager(hass).async_set_agent(config_entry.entry_id, agent)
-                                            ^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'HomeAssistant' object has no attribute 'entry_id'
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/usr/src/homeassistant/homeassistant/__main__.py", line 227, in <module>
+    sys.exit(main())
+  File "/usr/src/homeassistant/homeassistant/__main__.py", line 213, in main
+    exit_code = runner.run(runtime_conf)
+  File "/usr/src/homeassistant/homeassistant/runner.py", line 154, in run
+    return loop.run_until_complete(setup_and_run_hass(runtime_config))
+  File "/usr/local/lib/python3.13/asyncio/base_events.py", line 707, in run_until_complete
+    self.run_forever()
+  File "/usr/local/lib/python3.13/asyncio/base_events.py", line 678, in run_forever
+    self._run_once()
+  File "/usr/local/lib/python3.13/asyncio/base_events.py", line 2033, in _run_once
+    handle._run()
+  File "/usr/local/lib/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "/usr/src/homeassistant/homeassistant/config_entries.py", line 2343, in async_forward_entry_setup
+    result = await self._async_forward_entry_setup(entry, domain, True)
+  File "/usr/src/homeassistant/homeassistant/config_entries.py", line 2374, in _async_forward_entry_setup
+    await integration.async_get_platform(domain)
+  File "/usr/src/homeassistant/homeassistant/loader.py", line 1108, in async_get_platform
+    platforms = await self.async_get_platforms((platform_name,))
+  File "/usr/src/homeassistant/homeassistant/loader.py", line 1173, in async_get_platforms
+    platforms.update(self._load_platforms(platform_names))
+  File "/usr/src/homeassistant/homeassistant/loader.py", line 1098, in _load_platforms
+    platform_name: self._load_platform(platform_name)
+  File "/usr/src/homeassistant/homeassistant/loader.py", line 1272, in _load_platform
+    cache[full_name] = self._import_platform(platform_name)
+  File "/usr/src/homeassistant/homeassistant/loader.py", line 1304, in _import_platform
+    return importlib.import_module(f"{self.pkg_path}.{platform_name}")
+
+2025-02-20 16:31:12.253 ERROR (MainThread) [homeassistant] Error doing job: Task exception was never retrieved (None)
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/config_entries.py", line 2343, in async_forward_entry_setup
+    result = await self._async_forward_entry_setup(entry, domain, True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/config_entries.py", line 2374, in _async_forward_entry_setup
+    await integration.async_get_platform(domain)
+  File "/usr/src/homeassistant/homeassistant/loader.py", line 1108, in async_get_platform
+    platforms = await self.async_get_platforms((platform_name,))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/loader.py", line 1185, in async_get_platforms
+    import_future.result()
+    ~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/src/homeassistant/homeassistant/loader.py", line 1173, in async_get_platforms
+    platforms.update(self._load_platforms(platform_names))
+                     ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/loader.py", line 1098, in _load_platforms
+    platform_name: self._load_platform(platform_name)
+                   ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/loader.py", line 1272, in _load_platform
+    cache[full_name] = self._import_platform(platform_name)
+                       ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/loader.py", line 1304, in _import_platform
+    return importlib.import_module(f"{self.pkg_path}.{platform_name}")
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/util/loop.py", line 201, in protected_loop_func
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1026, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/config/custom_components/n8n_conversation_agent/conversation.py", line 14, in <module>
+    from homeassistant.helpers.entity_platform import async_add_entities
+ImportError: cannot import name 'async_add_entities' from 'homeassistant.helpers.entity_platform' (/usr/src/homeassistant/homeassistant/helpers/entity_platform.py)
