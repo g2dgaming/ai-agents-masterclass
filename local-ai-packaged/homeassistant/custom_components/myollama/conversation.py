@@ -5,7 +5,7 @@ from __future__ import annotations
 from collections.abc import AsyncGenerator, Callable
 import json
 import logging
-from typing import Any, Literal
+from typing import Any, Literal, re
 
 import ollama
 from voluptuous_openapi import convert
@@ -27,7 +27,7 @@ from .const import (
     DEFAULT_KEEP_ALIVE,
     DEFAULT_MAX_HISTORY,
     DEFAULT_NUM_CTX,
-    DOMAIN,
+    DOMAIN, CONF_HIDE_THINKING, DEFAULT_HIDE_THINKING,
 )
 from .models import MessageHistory, MessageRole
 
@@ -228,6 +228,7 @@ class OllamaConversationEntity(
 
         client = self.hass.data[DOMAIN][self.entry.entry_id]
         model = settings[CONF_MODEL]
+        hide_thinking = settings.get(CONF_HIDE_THINKING, DEFAULT_HIDE_THINKING)
 
         try:
             await chat_log.async_update_llm_data(
@@ -290,7 +291,11 @@ class OllamaConversationEntity(
             raise TypeError(
                 f"Unexpected last message type: {type(chat_log.content[-1])}"
             )
-        intent_response.async_set_speech(chat_log.content[-1].content or "")
+        final_text = chat_log.content[-1].content or ""
+        if hide_thinking:
+            # Replace any <think>...</think> content with "Thinking"
+            final_text = re.sub(r"<think>.*?</think>", "Thinking... ", final_text, flags=re.DOTALL)
+        intent_response.async_set_speech(final_text)
         return conversation.ConversationResult(
             response=intent_response, conversation_id=chat_log.conversation_id
         )

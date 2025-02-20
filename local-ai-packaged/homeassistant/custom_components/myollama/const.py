@@ -1,6 +1,6 @@
 """Constants for the Ollama integration."""
 
-DOMAIN = "ollama"
+DOMAIN = "myollama"
 
 CONF_MODEL = "model"
 CONF_PROMPT = "prompt"
@@ -15,6 +15,9 @@ CONF_NUM_CTX = "num_ctx"
 DEFAULT_NUM_CTX = 8192
 MIN_NUM_CTX = 2048
 MAX_NUM_CTX = 131072
+
+CONF_HIDE_THINKING = "hide_thinking"
+DEFAULT_HIDE_THINKING= False
 
 CONF_MAX_HISTORY = "max_history"
 DEFAULT_MAX_HISTORY = 20
