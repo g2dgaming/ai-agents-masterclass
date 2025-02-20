@@ -1,8 +1,0 @@
-# intents.yaml
-n8n_intent:
-  - sentences:
-      - "{query}"
-    action:
-      service: script.handle_n8n_query
-      data:
-        query: "{{ query }}"

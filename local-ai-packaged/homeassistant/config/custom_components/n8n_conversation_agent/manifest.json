@@ -1,0 +1,9 @@
+{
+  "domain": "n8n_conversation_agent",
+  "name": "n8n Conversation Agent",
+  "version": "2025.1",
+  "documentation": "https://github.com/yourusername/n8n_conversation",
+  "dependencies": [],
+  "codeowners": ["@yourusername"],
+  "requirements": ["requests"]
+}
