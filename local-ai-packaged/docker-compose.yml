@@ -6,6 +6,7 @@ volumes:
   flowise_storage:
   whisper_cache:
   coqui_tts_storage:
+  home-assistant_storage:
 
 networks:
   demo:
@@ -216,6 +217,7 @@ services:
     image: "ghcr.io/home-assistant/home-assistant:stable"
     volumes:
       - /opt/homeassistant/config:/config
+      - ./homeassistant/custom_components:/config/custom_components
       - /etc/localtime:/etc/localtime:ro
     restart: unless-stopped
     privileged: true

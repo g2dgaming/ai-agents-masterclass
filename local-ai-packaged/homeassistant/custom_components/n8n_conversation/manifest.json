@@ -1,0 +1,10 @@
+{
+  "domain": "n8n_conversation",
+  "name": "n8n Conversation Agent",
+  "version": "1.0",
+  "documentation": "https://github.com/yourusername/n8n-homeassistant",
+  "dependencies": [],
+  "codeowners": ["@your_github_username"],
+  "requirements": ["requests"],
+  "config_flow": true
+}
