@@ -1,6 +1,6 @@
 """Constants for the Ollama integration."""
 
-DOMAIN = "myollama"
+DOMAIN = "ollama"
 
 CONF_MODEL = "model"
 CONF_PROMPT = "prompt"
