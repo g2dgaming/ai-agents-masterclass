@@ -45,7 +45,7 @@ x-init-ollama: &init-ollama
   entrypoint: /bin/sh
   command:
     - "-c"
-    - "sleep 3; OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-coder-v2-tool-calling:latest; OLLAMA_HOST=ollama:11434 ollama pull nomic-embed-text;OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-r1-tool-calling:8b;OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-r1-tool-calling:14bb;OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-r1-tool-calling:32b;OLLAMA_HOST=ollama:11434 ollama run qwen2.5:32b;OLLAMA_HOST=ollama:11434 ollama pull rns96/deepseek-R1-ablated:f32_Q80;OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-v2-tool-calling:16b"
+    - "sleep 3; OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-coder-v2-tool-calling:latest; OLLAMA_HOST=ollama:11434 ollama pull nomic-embed-text;OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-r1-tool-calling:8b;OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-r1-tool-calling:14b;OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-r1-tool-calling:32b;OLLAMA_HOST=ollama:11434 ollama run qwen2.5:32b;OLLAMA_HOST=ollama:11434 ollama pull rns96/deepseek-R1-ablated:f32_Q80;OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-v2-tool-calling:16b"
 
 services:
   flowise:
@@ -213,7 +213,7 @@ services:
     networks:
       - demo
   homeassistant:
-    container_name: homeassistant2
+    container_name: homeassistant
     image: "ghcr.io/home-assistant/home-assistant:dev"
     volumes:
       - ./homeassistant/config:/config

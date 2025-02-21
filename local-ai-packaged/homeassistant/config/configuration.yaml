@@ -9,6 +9,31 @@ tts:
     host: coqui-tts
     port: 5002
 
+intent_script:
+  AutomationIntent:
+    speech:
+      text: "Executing automation task."
+    action:
+      - service: automation.trigger
+        entity_id: automation.handle_automation_request
+
+  SensitiveQueryIntent:
+    speech:
+      text: "Forwarding your request to an external processor."
+    action:
+      - service: rest_command.forward_to_n8n
+
+rest_command:
+  forward_to_n8n:
+    url: "http://192.168.1.42:5678/webhook/home-assistant-query"
+    method: "post"
+    headers:
+      Content-Type: "application/json"
+    payload: >
+      {
+        "query": "{{ trigger.event.data.text }}"
+      }
+
 
 automation: !include automations.yaml
 script: !include scripts.yaml

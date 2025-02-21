@@ -1,53 +1,58 @@
-2025-02-21 06:12:34.945 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration n8n_conversation_agent which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
-2025-02-21 06:12:36.252 WARNING (MainThread) [homeassistant.helpers.frame] Detected that custom integration 'n8n_conversation_agent' calls async_forward_entry_setup for integration, n8n_conversation_agent with title: N8N Test and entry_id: 01JMJ3D1THQB7N37TPJ8R6N7M8, which is deprecated, await async_forward_entry_setups instead at custom_components/n8n_conversation_agent/__init__.py, line 17: hass.async_create_task(. This will stop working in Home Assistant 2025.6, please report it to the author of the 'n8n_conversation_agent' custom integration
-2025-02-21 06:12:36.995 WARNING (MainThread) [homeassistant.helpers.frame] Detected code that calls async_forward_entry_setup for integration n8n_conversation_agent with title: N8N Test and entry_id: 01JMJ3D1THQB7N37TPJ8R6N7M8, during setup without awaiting async_forward_entry_setup, which can cause the setup lock to be released before the setup is done. This will stop working in Home Assistant 2025.1, please report this issue
-Stack (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/usr/src/homeassistant/homeassistant/__main__.py", line 227, in <module>
-    sys.exit(main())
-  File "/usr/src/homeassistant/homeassistant/__main__.py", line 213, in main
-    exit_code = runner.run(runtime_conf)
-  File "/usr/src/homeassistant/homeassistant/runner.py", line 154, in run
-    return loop.run_until_complete(setup_and_run_hass(runtime_config))
-  File "/usr/local/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
-    self.run_forever()
-  File "/usr/local/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
-    self._run_once()
-  File "/usr/local/lib/python3.13/asyncio/base_events.py", line 2040, in _run_once
-    handle._run()
-  File "/usr/local/lib/python3.13/asyncio/events.py", line 89, in _run
-    self._context.run(self._callback, *self._args)
-  File "/usr/src/homeassistant/homeassistant/config_entries.py", line 2607, in async_forward_entry_setup
-    _report_non_awaited_platform_forwards(entry, "async_forward_entry_setup")
-  File "/usr/src/homeassistant/homeassistant/config_entries.py", line 1313, in _report_non_awaited_platform_forwards
-    report_usage(
-  File "/usr/src/homeassistant/homeassistant/helpers/frame.py", line 234, in report_usage
-    _LOGGER.warning(msg, stack_info=True)
-2025-02-21 06:12:36.996 WARNING (MainThread) [homeassistant.helpers.frame] Detected code that calls async_forward_entry_setup for integration n8n_conversation_agent with title: N8N and entry_id: 01JMJ3DE2H00TVBT5K8RB4269V, during setup without awaiting async_forward_entry_setup, which can cause the setup lock to be released before the setup is done. This will stop working in Home Assistant 2025.1, please report this issue
-Stack (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/usr/src/homeassistant/homeassistant/__main__.py", line 227, in <module>
-    sys.exit(main())
-  File "/usr/src/homeassistant/homeassistant/__main__.py", line 213, in main
-    exit_code = runner.run(runtime_conf)
-  File "/usr/src/homeassistant/homeassistant/runner.py", line 154, in run
-    return loop.run_until_complete(setup_and_run_hass(runtime_config))
-  File "/usr/local/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
-    self.run_forever()
-  File "/usr/local/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
-    self._run_once()
-  File "/usr/local/lib/python3.13/asyncio/base_events.py", line 2040, in _run_once
-    handle._run()
-  File "/usr/local/lib/python3.13/asyncio/events.py", line 89, in _run
-    self._context.run(self._callback, *self._args)
-  File "/usr/src/homeassistant/homeassistant/config_entries.py", line 2607, in async_forward_entry_setup
-    _report_non_awaited_platform_forwards(entry, "async_forward_entry_setup")
-  File "/usr/src/homeassistant/homeassistant/config_entries.py", line 1313, in _report_non_awaited_platform_forwards
-    report_usage(
-  File "/usr/src/homeassistant/homeassistant/helpers/frame.py", line 234, in report_usage
-    _LOGGER.warning(msg, stack_info=True)
-2025-02-21 06:13:18.553 ERROR (MainThread) [homeassistant.components.websocket_api.http.connection] [130733995114848] Error handling message: required key not provided @ data['tts_voice']. Got None (invalid_format) admin from 192.168.1.38 (Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36)
-2025-02-21 06:15:27.413 ERROR (MainThread) [homeassistant.components.websocket_api.http.connection] [130733995114848] Error handling message: required key not provided @ data['tts_voice']. Got None (invalid_format) admin from 192.168.1.38 (Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36)
-2025-02-21 06:16:45.247 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-02-21 09:00:28.319 ERROR (MainThread) [homeassistant] Error doing job: Task exception was never retrieved (None)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/wyoming/client.py", line 28, in write_event
+    assert self._writer is not None
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+2025-02-21 09:03:33.275 ERROR (MainThread) [homeassistant] Error doing job: Task exception was never retrieved (None)
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/components/wyoming/assist_satellite.py", line 669, in _stream_tts
+    extension, data = await tts.async_get_media_source_audio(self.hass, media_id)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/tts/__init__.py", line 195, in async_get_media_source_audio
+    return await hass.data[DATA_TTS_MANAGER].async_get_tts_audio(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **media_source_id_to_kwargs(media_source_id),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/components/tts/__init__.py", line 704, in async_get_tts_audio
+    await pending
+  File "/usr/src/homeassistant/homeassistant/components/tts/__init__.py", line 782, in get_tts_data
+    extension, data = await engine_instance.async_get_tts_audio(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        message, language, options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/components/tts/legacy.py", line 251, in async_get_tts_audio
+    return await self.hass.async_add_executor_job(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        partial(self.get_tts_audio, message, language, options=options)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/src/homeassistant/homeassistant/components/marytts/tts.py", line 92, in get_tts_audio
+    data = self._mary.speak(message, effects)
+  File "/usr/local/lib/python3.13/site-packages/speak2mary/__init__.py", line 52, in speak
+    raise Exception("{0} - {1}: '{2}''".format(response.status, response.reason, response.readline()))
+Exception: 500 - INTERNAL SERVER ERROR: 'b'<!doctype html>\n'''
+2025-02-21 09:05:54.437 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-02-21 09:10:33.665 ERROR (MainThread) [frontend.js.modern.202502210.dev] Uncaught error from Chrome 133.0.0.0 on macOS 10.15.7
+TypeError: Cannot read properties of null (reading 'removeEventListener')
+renderHeading (src/components/ha-dialog.ts:54:24)
+apply (src/scoped-custom-element-registry.js:262:44)
+appendChild (src/dialogs/make-dialog-manager.ts:140:7)
+2025-02-21 09:12:32.450 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-02-21 09:12:46.254 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-02-21 09:15:13.928 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-02-21 09:17:14.612 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-02-21 09:19:19.064 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-02-21 09:19:42.875 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-02-21 09:21:49.636 ERROR (MainThread) [frontend.js.modern.202502210.dev] Uncaught error from Chrome 133.0.0.0 on macOS 10.15.7
+TypeError: Cannot read properties of null (reading 'removeEventListener')
+renderHeading (src/components/ha-dialog.ts:54:24)
+apply (src/scoped-custom-element-registry.js:262:44)
+appendChild (src/dialogs/make-dialog-manager.ts:140:7)

@@ -1,0 +1,10 @@
+intents:
+  AutomationIntent:
+    - "Turn on {device}."
+    - "Activate {device}."
+    - "Set the thermostat to {temperature} degrees."
+
+  SensitiveQueryIntent:
+    - "Tell me something uncensored."
+    - "I have a private question."
+    - "What's your opinion on {topic}?"

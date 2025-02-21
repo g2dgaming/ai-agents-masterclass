@@ -12,19 +12,19 @@
         "name": "Home Assistant",
         "stt_engine": "stt.faster_whisper",
         "stt_language": "en",
-        "tts_engine": "cloud",
-        "tts_language": "en-US",
-        "tts_voice": "JennyNeural",
+        "tts_engine": "marytts",
+        "tts_language": "en_US",
+        "tts_voice": null,
         "wake_word_entity": "wake_word.openwakeword",
         "wake_word_id": "hey_jarvis_v0.1",
         "prefer_local_intents": false
       },
       {
-        "conversation_engine": "conversation.mfdoom_deepseek_r1_tool_calling_8b",
+        "conversation_engine": "conversation.mfdoom_deepseek_coder_v2_tool_calling",
         "conversation_language": "*",
-        "id": "01jmbxqa88gwyemnd056p3vykb",
+        "id": "01jmkpscekeev1xkn681essqve",
         "language": "en",
-        "name": "Jarvis",
+        "name": "Friday",
         "stt_engine": "stt.faster_whisper",
         "stt_language": "en",
         "tts_engine": "marytts",
@@ -35,6 +35,6 @@
         "prefer_local_intents": false
       }
     ],
-    "preferred_item": "01jmbqbysx7nb81x6q6f9wqtcw"
+    "preferred_item": "01jmkpscekeev1xkn681essqve"
   }
 }
