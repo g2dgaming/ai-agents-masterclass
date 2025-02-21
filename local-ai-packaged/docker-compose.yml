@@ -214,7 +214,7 @@ services:
       - demo
   homeassistant:
     container_name: homeassistant2
-    image: "ghcr.io/home-assistant/home-assistant:stable"
+    image: "ghcr.io/home-assistant/home-assistant:dev"
     volumes:
       - ./homeassistant/config:/config
     restart: unless-stopped
