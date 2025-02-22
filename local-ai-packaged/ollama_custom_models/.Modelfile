@@ -2,11 +2,10 @@ FROM rns96/deepseek-R1-ablated:f32_Q80
 
 # Set the number of threads (adjust as needed)
 PARAMETER num_thread 16
+PARAMETER num_ctx 16000
+PARAMETER num_gpu 50
+PARAMETER num_batch 1024
 
-# Set the context window size (adjust based on your RAM capacity)
-PARAMETER num_ctx 8192
-
-# Retain the existing TEMPLATE section
 TEMPLATE """{{- if .Messages }}
 {{- if or .System .Tools }}
 {{- if .System }}
@@ -21,33 +20,33 @@ The following tools are available when needed for specific tasks:
 {{- end }}
 {{- range $i, $_ := .Messages }}
 {{- $last := eq (len (slice $.Messages $i)) 1 }}
-{{- if eq .Role "user" }}<|User|>{{ .Content }}
+{{- if eq .Role "user" }}<｜User｜>{{ .Content }}
 {{- if and $.Tools $last }}
 Given the tools, please respond with a JSON object for a function call with its proper arguments that best answers the given prompt.
 Respond in the format {"name": function name, "parameters": dictionary of argument name and its value}. Do not use variables.
 {{- end }}
-{{- if $last }}<|Assistant|>{{ end }}
+{{- if $last }}<｜Assistant｜>{{ end }}
 {{- else if eq .Role "assistant" }}
-<|Assistant|>
+<｜Assistant｜>
 {{- if .ToolCalls }}
-<|tool calls begin|>
+<｜tool▁calls▁begin｜>
 {{- range .ToolCalls }}
-<|tool call begin|>
+<｜tool▁call▁begin｜>
 {"name": "{{ .Function.Name }}", "parameters": {{ .Function.Arguments }}}
-<|tool call end|>
+<｜tool▁call▁end｜>
 {{- end }}
-<|tool calls end|>
+<｜tool▁calls▁end｜>
 {{- else }}
 {{ .Content }}
-{{- if not $last }}<|end of sentence|>{{- end }}
+{{- if not $last }}<｜end▁of▁sentence｜>{{- end }}
 {{- end }}
 {{- else if eq .Role "tool" }}
-<|tool outputs begin|>
-<|tool output begin|>
+<｜tool▁outputs▁begin｜>
+<｜tool▁output▁begin｜>
 {{ .Content }}
-<|tool output end|>
-<|tool outputs end|>
-{{- if and $last (ne .Role "assistant") }}<|Assistant|>{{- end }}
+<｜tool▁output▁end｜>
+<｜tool▁outputs▁end｜>
+{{- if and $last (ne .Role "assistant") }}<｜Assistant｜>{{- end }}
 {{- end }}
 {{- end }}
 {{- else }}
@@ -55,15 +54,13 @@ Respond in the format {"name": function name, "parameters": dictionary of argume
 {{ .System }}
 {{- end }}
 {{- if .Prompt }}
-<|User|>
+<｜User｜>
 {{ .Prompt }}
 {{- end }}
-<|Assistant|>
+<｜Assistant｜>
 {{ .Response }}
 {{- if .Response }}{{ end }}
 {{- end }}"""
-
-# Retain the existing LICENSE section
 LICENSE """MIT License
 
 Copyright (c) 2023 DeepSeek
