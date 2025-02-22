@@ -35,7 +35,7 @@ x-ollama: &service-ollama
     - 11434:11434
   volumes:
     - /home/samarth/samsung_t7/ollama:/root/.ollama
-
+    - ./ollama_custom_models:/root/ollam_custom_models
 x-init-ollama: &init-ollama
   image: ollama/ollama:latest
   networks: ['demo']

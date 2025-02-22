@@ -9,37 +9,6 @@ tts:
     host: coqui-tts
     port: 5002
 
-conversation:
-  intents:
-    SensitiveQueryIntent:
-      - "Tell me something uncensored."
-      - "I have a private question."
-      - "I want to [action] {person}."
-      - "I am too moody or emotional."
-      - "I want to end my life."
-
-
-intent_script:
-  SensitiveQueryIntent:
-    description: Forward sensitive questions to n8n for further processing
-    async_action: true
-    speech:
-      text: "Give me 1 hour, I will email you about this"
-    action:
-      - service: rest_command.forward_to_n8n
-
-rest_command:
-  forward_to_n8n:
-    url: "http://n8n:5678/webhook/home-assistant"
-    method: "post"
-    headers:
-      Content-Type: "application/json"
-    payload: >
-      {
-        "query": "{{ query }}"
-      }
-
-
 
 automation: !include automations.yaml
 script: !include scripts.yaml
