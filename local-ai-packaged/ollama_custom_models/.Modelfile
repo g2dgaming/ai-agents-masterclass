@@ -2,8 +2,7 @@ FROM rns96/deepseek-R1-ablated:f32_Q80
 
 # Set the number of threads (adjust as needed)
 PARAMETER num_thread 16
-PARAMETER num_ctx 16000
-PARAMETER num_gpu 50
+PARAMETER num_gpu 28
 PARAMETER num_batch 1024
 
 TEMPLATE """{{- if .Messages }}
