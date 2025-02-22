@@ -20,7 +20,7 @@
         "prefer_local_intents": false
       },
       {
-        "conversation_engine": "conversation.mfdoom_deepseek_coder_v2_tool_calling",
+        "conversation_engine": "conversation.rns96_deepseek_r1_ablated_f32_q80",
         "conversation_language": "*",
         "id": "01jmkpscekeev1xkn681essqve",
         "language": "en",

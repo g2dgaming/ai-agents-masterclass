@@ -1,12 +1,2 @@
-2025-02-21 08:37:42.537 ERROR (MainThread) [homeassistant.helpers.intent] Service call failed for assist_satellite.my_satellite
-Traceback (most recent call last):
-  File "/usr/src/homeassistant/homeassistant/helpers/intent.py", line 1118, in async_handle_states
-    await service_coro
-  File "/usr/local/lib/python3.13/asyncio/tasks.py", line 634, in _wait_for_one
-    return f.result() if resolve else f
-           ~~~~~~~~^^
-  File "/usr/src/homeassistant/homeassistant/components/intent/__init__.py", line 227, in async_call_service
-    raise intent.IntentHandleError(
-        f"Service {service} does not support entity {state.entity_id}"
-    )
-homeassistant.helpers.intent.IntentHandleError: Service turn_off does not support entity assist_satellite.my_satellite
+2025-02-22 07:57:39.873 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from 192.168.1.34 (192.168.1.34). Requested URL: '/auth/login_flow/6985aed550ed13f76584b79bc1f3b107'. (Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36)
+2025-02-22 07:57:43.799 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from 192.168.1.34 (192.168.1.34). Requested URL: '/auth/login_flow/6985aed550ed13f76584b79bc1f3b107'. (Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36)

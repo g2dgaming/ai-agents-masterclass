@@ -1,4 +1,4 @@
-
+#confiuration.yaml
 # Loads default set of integrations. Do not remove.
 default_config:
 
@@ -9,30 +9,36 @@ tts:
     host: coqui-tts
     port: 5002
 
-intent_script:
-  AutomationIntent:
-    speech:
-      text: "Executing automation task."
-    action:
-      - service: automation.trigger
-        entity_id: automation.handle_automation_request
+conversation:
+  intents:
+    SensitiveQueryIntent:
+      - "Tell me something uncensored."
+      - "I have a private question."
+      - "I want to [action] {person}."
+      - "I am too moody or emotional."
+      - "I want to end my life."
 
+
+intent_script:
   SensitiveQueryIntent:
+    description: Forward sensitive questions to n8n for further processing
+    async_action: true
     speech:
-      text: "Forwarding your request to an external processor."
+      text: "Give me 1 hour, I will email you about this"
     action:
       - service: rest_command.forward_to_n8n
 
 rest_command:
   forward_to_n8n:
-    url: "http://192.168.1.42:5678/webhook/home-assistant-query"
+    url: "http://n8n:5678/webhook/home-assistant"
     method: "post"
     headers:
       Content-Type: "application/json"
     payload: >
       {
-        "query": "{{ trigger.event.data.text }}"
+        "query": "{{ query }}"
       }
+
 
 
 automation: !include automations.yaml

@@ -4,68 +4,120 @@
   "key": "core.restore_state",
   "data": [
     {
-      "state": {"entity_id":"person.admin","state":"unknown","attributes":{"editable":true,"id":"admin","device_trackers":[],"user_id":"de8a1dbeb0bf4df0916422754888371a","icon":"mdi:account","friendly_name":"admin"},"last_changed":"2025-02-21T09:00:26.154854+00:00","last_reported":"2025-02-21T09:00:29.498806+00:00","last_updated":"2025-02-21T09:00:29.498806+00:00","context":{"id":"01JMKVS9DTBB7QQC1CSM6PAR36","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"person.admin","state":"unknown","attributes":{"editable":true,"id":"admin","device_trackers":[],"source":"person.admin","user_id":"de8a1dbeb0bf4df0916422754888371a","icon":"mdi:account","friendly_name":"admin"},"last_changed":"2025-02-22T07:59:12.735288+00:00","last_reported":"2025-02-22T07:59:12.735288+00:00","last_updated":"2025-02-22T07:59:12.735288+00:00","context":{"id":"01JMPANSTZB8J2GMQCAMW0FRJB","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-02-21T09:30:29.501973+00:00"
+      "last_seen": "2025-02-22T07:59:23.302437+00:00"
     },
     {
-      "state": {"entity_id":"conversation.home_assistant","state":"2025-02-21T09:06:12.503595+00:00","attributes":{"friendly_name":"Home Assistant","supported_features":1},"last_changed":"2025-02-21T09:06:12.503608+00:00","last_reported":"2025-02-21T09:06:12.503608+00:00","last_updated":"2025-02-21T09:06:12.503608+00:00","context":{"id":"01JMKW3GG86HKQ6VATJ9G6JD9Y","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"conversation.home_assistant","state":"2025-02-21T09:06:12.503595+00:00","attributes":{"friendly_name":"Home Assistant","supported_features":1},"last_changed":"2025-02-22T07:59:14.119273+00:00","last_reported":"2025-02-22T07:59:14.119273+00:00","last_updated":"2025-02-22T07:59:14.119273+00:00","context":{"id":"01JMPANV67WR46H6P40GB43MS3","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-02-21T09:30:29.501973+00:00"
+      "last_seen": "2025-02-22T07:59:23.302437+00:00"
     },
     {
-      "state": {"entity_id":"automation.when_start_listening","state":"on","attributes":{"id":"1739957211186","last_triggered":"2025-02-19T09:27:07.529343+00:00","mode":"single","current":0,"friendly_name":"When start listening"},"last_changed":"2025-02-21T09:00:27.088781+00:00","last_reported":"2025-02-21T09:00:27.088781+00:00","last_updated":"2025-02-21T09:00:27.088781+00:00","context":{"id":"01JMKVS72G19VH2CCE3CF7V55K","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"automation.when_start_listening","state":"on","attributes":{"id":"1739957211186","last_triggered":"2025-02-19T09:27:07.529343+00:00","mode":"single","current":0,"friendly_name":"When start listening"},"last_changed":"2025-02-22T07:59:15.188859+00:00","last_reported":"2025-02-22T07:59:15.188859+00:00","last_updated":"2025-02-22T07:59:15.188859+00:00","context":{"id":"01JMPANW7M5R2W6CPTSCNXZNJX","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-02-21T09:30:29.501973+00:00"
+      "last_seen": "2025-02-22T07:59:23.302437+00:00"
     },
     {
-      "state": {"entity_id":"tts.google_translate_en_com","state":"unknown","attributes":{"friendly_name":"Google Translate en com"},"last_changed":"2025-02-21T09:00:27.710494+00:00","last_reported":"2025-02-21T09:00:27.710494+00:00","last_updated":"2025-02-21T09:00:27.710494+00:00","context":{"id":"01JMKVS7NY52WVZM1YXDG68H81","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"conversation.mfdoom_deepseek_coder_v2_tool_calling","state":"2025-02-21T14:27:21.871678+00:00","attributes":{"friendly_name":"MFDoom/deepseek-coder-v2-tool-calling","supported_features":1},"last_changed":"2025-02-22T07:59:15.338762+00:00","last_reported":"2025-02-22T07:59:15.338762+00:00","last_updated":"2025-02-22T07:59:15.338762+00:00","context":{"id":"01JMPANWCAM9Y3SRQTFJ5CVK6H","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-02-21T09:30:29.501973+00:00"
+      "last_seen": "2025-02-22T07:59:23.302437+00:00"
     },
     {
-      "state": {"entity_id":"stt.faster_whisper","state":"unknown","attributes":{"friendly_name":"faster-whisper"},"last_changed":"2025-02-21T09:00:27.738299+00:00","last_reported":"2025-02-21T09:00:27.738299+00:00","last_updated":"2025-02-21T09:00:27.738299+00:00","context":{"id":"01JMKVS7PTMJHS79XEGRC06QVM","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"conversation.mfdoom_deepseek_v2_tool_calling_16b","state":"2025-02-21T14:33:46.589879+00:00","attributes":{"friendly_name":"MFDoom/deepseek-v2-tool-calling:16b","supported_features":1},"last_changed":"2025-02-22T07:59:15.339019+00:00","last_reported":"2025-02-22T07:59:15.339019+00:00","last_updated":"2025-02-22T07:59:15.339019+00:00","context":{"id":"01JMPANWCBS5B586JJ7VFH10SX","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-02-21T09:30:29.501973+00:00"
+      "last_seen": "2025-02-22T07:59:23.302437+00:00"
     },
     {
-      "state": {"entity_id":"wake_word.openwakeword","state":"unknown","attributes":{"icon":"mdi:account-tie-voice","friendly_name":"Hey Jarvis"},"last_changed":"2025-02-21T09:00:27.740181+00:00","last_reported":"2025-02-21T09:00:27.740181+00:00","last_updated":"2025-02-21T09:00:27.740181+00:00","context":{"id":"01JMKVS7PWRRNRZWNH189GDHBT","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"tts.google_translate_en_com","state":"unknown","attributes":{"friendly_name":"Google Translate en com"},"last_changed":"2025-02-22T07:59:15.351643+00:00","last_reported":"2025-02-22T07:59:15.351643+00:00","last_updated":"2025-02-22T07:59:15.351643+00:00","context":{"id":"01JMPANWCQJC17N1C0FW2738EX","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-02-21T09:30:29.501973+00:00"
+      "last_seen": "2025-02-22T07:59:23.302437+00:00"
     },
     {
-      "state": {"entity_id":"select.my_satellite_assistant","state":"Friday","attributes":{"options":["preferred","Friday","Home Assistant"],"friendly_name":"my satellite Assistant"},"last_changed":"2025-02-21T09:15:08.925085+00:00","last_reported":"2025-02-21T09:15:08.925085+00:00","last_updated":"2025-02-21T09:15:08.925085+00:00","context":{"id":"01JMKWM47XEYQEQM3K5718QP4N","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"wake_word.openwakeword","state":"unknown","attributes":{"icon":"mdi:account-tie-voice","friendly_name":"Hey Jarvis"},"last_changed":"2025-02-22T07:59:15.357999+00:00","last_reported":"2025-02-22T07:59:15.357999+00:00","last_updated":"2025-02-22T07:59:15.357999+00:00","context":{"id":"01JMPANWCXYJJFR3D9AJJAQXJH","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-02-21T09:30:29.501973+00:00"
+      "last_seen": "2025-02-22T07:59:23.302437+00:00"
     },
     {
-      "state": {"entity_id":"select.my_satellite_noise_suppression_level","state":"max","attributes":{"options":["off","low","medium","high","max"],"friendly_name":"my satellite Noise suppression level"},"last_changed":"2025-02-21T09:15:08.925224+00:00","last_reported":"2025-02-21T09:15:08.925224+00:00","last_updated":"2025-02-21T09:15:08.925224+00:00","context":{"id":"01JMKWM47XH2TVCEGRWZEHD52Y","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"stt.faster_whisper","state":"unknown","attributes":{"friendly_name":"faster-whisper"},"last_changed":"2025-02-22T07:59:15.359879+00:00","last_reported":"2025-02-22T07:59:15.359879+00:00","last_updated":"2025-02-22T07:59:15.359879+00:00","context":{"id":"01JMPANWCZF3BDJ4C529Y50Z8K","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-02-21T09:30:29.501973+00:00"
+      "last_seen": "2025-02-22T07:59:23.302437+00:00"
     },
     {
-      "state": {"entity_id":"select.my_satellite_finished_speaking_detection","state":"aggressive","attributes":{"options":["default","relaxed","aggressive"],"friendly_name":"my satellite Finished speaking detection"},"last_changed":"2025-02-21T09:15:08.925346+00:00","last_reported":"2025-02-21T09:15:08.925346+00:00","last_updated":"2025-02-21T09:15:08.925346+00:00","context":{"id":"01JMKWM47X0VY7CANMARNESCMX","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"select.my_satellite_assistant_2","state":"Friday","attributes":{"options":["preferred","Friday","Home Assistant"],"friendly_name":"my satellite Assistant"},"last_changed":"2025-02-21T14:25:19.267927+00:00","last_reported":"2025-02-21T14:25:19.267927+00:00","last_updated":"2025-02-21T14:25:19.267927+00:00","context":{"id":"01JMMEC2D3NVGG2FGTF5AVGM57","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-02-21T09:30:29.501973+00:00"
+      "last_seen": "2025-02-21T14:36:52.179500+00:00"
     },
     {
-      "state": {"entity_id":"switch.my_satellite_mute","state":"off","attributes":{"friendly_name":"my satellite Mute"},"last_changed":"2025-02-21T09:15:08.925595+00:00","last_reported":"2025-02-21T09:15:08.925595+00:00","last_updated":"2025-02-21T09:15:08.925595+00:00","context":{"id":"01JMKWM47XBMHBNQ7GYF5Z6TGC","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"select.my_satellite_noise_suppression_level_2","state":"off","attributes":{"options":["off","low","medium","high","max"],"friendly_name":"my satellite Noise suppression level"},"last_changed":"2025-02-21T14:25:19.268036+00:00","last_reported":"2025-02-21T14:25:19.268036+00:00","last_updated":"2025-02-21T14:25:19.268036+00:00","context":{"id":"01JMMEC2D4F3BDJ4C529Y50Z8K","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-02-21T09:30:29.501973+00:00"
+      "last_seen": "2025-02-21T14:36:52.179500+00:00"
     },
     {
-      "state": {"entity_id":"number.my_satellite_auto_gain","state":"4","attributes":{"min":0,"max":31,"step":1.0,"mode":"auto","friendly_name":"my satellite Auto gain"},"last_changed":"2025-02-21T09:15:08.925856+00:00","last_reported":"2025-02-21T09:15:08.925905+00:00","last_updated":"2025-02-21T09:15:08.925856+00:00","context":{"id":"01JMKWM47X7WGBK83ZYRNYEH60","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"select.my_satellite_finished_speaking_detection_2","state":"aggressive","attributes":{"options":["default","relaxed","aggressive"],"friendly_name":"my satellite Finished speaking detection"},"last_changed":"2025-02-21T14:25:19.268132+00:00","last_reported":"2025-02-21T14:25:19.268132+00:00","last_updated":"2025-02-21T14:25:19.268132+00:00","context":{"id":"01JMMEC2D4N01XESP3SFVXM1KW","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-02-21T14:36:52.179500+00:00"
+    },
+    {
+      "state": {"entity_id":"switch.my_satellite_mute_2","state":"off","attributes":{"friendly_name":"my satellite Mute"},"last_changed":"2025-02-21T14:25:19.268628+00:00","last_reported":"2025-02-21T14:25:19.268628+00:00","last_updated":"2025-02-21T14:25:19.268628+00:00","context":{"id":"01JMMEC2D47D14QE96K8JP81YB","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-02-21T14:36:52.179500+00:00"
+    },
+    {
+      "state": {"entity_id":"number.my_satellite_auto_gain_2","state":"14","attributes":{"min":0,"max":31,"step":1.0,"mode":"auto","friendly_name":"my satellite Auto gain"},"last_changed":"2025-02-21T14:25:19.269330+00:00","last_reported":"2025-02-21T14:25:19.269387+00:00","last_updated":"2025-02-21T14:25:19.269330+00:00","context":{"id":"01JMMEC2D5R3H3Y6D9BC60JEJX","parent_id":null,"user_id":null}},
       "extra_data": {
         "native_max_value": 31,
         "native_min_value": 0,
         "native_step": null,
         "native_unit_of_measurement": null,
-        "native_value": 4
+        "native_value": 14
       },
-      "last_seen": "2025-02-21T09:30:29.501973+00:00"
+      "last_seen": "2025-02-21T14:36:52.179500+00:00"
     },
     {
-      "state": {"entity_id":"number.my_satellite_mic_volume","state":"8.2","attributes":{"min":0.1,"max":10.0,"step":0.1,"mode":"auto","friendly_name":"my satellite Mic volume"},"last_changed":"2025-02-21T09:15:08.926031+00:00","last_reported":"2025-02-21T09:15:08.926079+00:00","last_updated":"2025-02-21T09:15:08.926031+00:00","context":{"id":"01JMKWM47Y1QPAYDNZ1SJMGKNR","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"number.my_satellite_mic_volume_2","state":"8.8","attributes":{"min":0.1,"max":10.0,"step":0.1,"mode":"auto","friendly_name":"my satellite Mic volume"},"last_changed":"2025-02-21T14:25:19.269539+00:00","last_reported":"2025-02-21T14:25:19.269591+00:00","last_updated":"2025-02-21T14:25:19.269539+00:00","context":{"id":"01JMMEC2D58K3RC6TGMXVYGQ9Z","parent_id":null,"user_id":null}},
+      "extra_data": {
+        "native_max_value": 10.0,
+        "native_min_value": 0.1,
+        "native_step": 0.1,
+        "native_unit_of_measurement": null,
+        "native_value": 8.8
+      },
+      "last_seen": "2025-02-21T14:36:52.179500+00:00"
+    },
+    {
+      "state": {"entity_id":"select.my_satellite_assistant","state":"Friday","attributes":{"options":["preferred","Friday","Home Assistant"],"friendly_name":"my satellite Assistant"},"last_changed":"2025-02-21T13:25:58.763132+00:00","last_reported":"2025-02-21T13:25:58.763132+00:00","last_updated":"2025-02-21T13:25:58.763132+00:00","context":{"id":"01JMMAZDBBJZM5CRG3H07AVBY6","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-02-21T13:32:14.825888+00:00"
+    },
+    {
+      "state": {"entity_id":"select.my_satellite_noise_suppression_level","state":"max","attributes":{"options":["off","low","medium","high","max"],"friendly_name":"my satellite Noise suppression level"},"last_changed":"2025-02-21T13:25:58.763247+00:00","last_reported":"2025-02-21T13:25:58.763247+00:00","last_updated":"2025-02-21T13:25:58.763247+00:00","context":{"id":"01JMMAZDBB7A7P9PYTX9CNQZ5P","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-02-21T13:32:14.825888+00:00"
+    },
+    {
+      "state": {"entity_id":"select.my_satellite_finished_speaking_detection","state":"default","attributes":{"options":["default","relaxed","aggressive"],"friendly_name":"my satellite Finished speaking detection"},"last_changed":"2025-02-21T13:25:58.763372+00:00","last_reported":"2025-02-21T13:25:58.763372+00:00","last_updated":"2025-02-21T13:25:58.763372+00:00","context":{"id":"01JMMAZDBBV2A6B8VCZ2GES24R","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-02-21T13:32:14.825888+00:00"
+    },
+    {
+      "state": {"entity_id":"switch.my_satellite_mute","state":"off","attributes":{"friendly_name":"my satellite Mute"},"last_changed":"2025-02-21T13:25:58.763913+00:00","last_reported":"2025-02-21T13:25:58.763913+00:00","last_updated":"2025-02-21T13:25:58.763913+00:00","context":{"id":"01JMMAZDBBR4XZEBKTHCJXV6F9","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-02-21T13:32:14.825888+00:00"
+    },
+    {
+      "state": {"entity_id":"number.my_satellite_auto_gain","state":"10","attributes":{"min":0,"max":31,"step":1.0,"mode":"auto","friendly_name":"my satellite Auto gain"},"last_changed":"2025-02-21T13:25:58.764843+00:00","last_reported":"2025-02-21T13:25:58.764895+00:00","last_updated":"2025-02-21T13:25:58.764843+00:00","context":{"id":"01JMMAZDBCEDQA03WAFHZXNDP0","parent_id":null,"user_id":null}},
+      "extra_data": {
+        "native_max_value": 31,
+        "native_min_value": 0,
+        "native_step": null,
+        "native_unit_of_measurement": null,
+        "native_value": 10
+      },
+      "last_seen": "2025-02-21T13:32:14.825888+00:00"
+    },
+    {
+      "state": {"entity_id":"number.my_satellite_mic_volume","state":"8.2","attributes":{"min":0.1,"max":10.0,"step":0.1,"mode":"auto","friendly_name":"my satellite Mic volume"},"last_changed":"2025-02-21T13:25:58.765037+00:00","last_reported":"2025-02-21T13:25:58.765085+00:00","last_updated":"2025-02-21T13:25:58.765037+00:00","context":{"id":"01JMMAZDBDQM8D07E8FB4XW83N","parent_id":null,"user_id":null}},
       "extra_data": {
         "native_max_value": 10.0,
         "native_min_value": 0.1,
@@ -73,22 +125,22 @@
         "native_unit_of_measurement": null,
         "native_value": 8.2
       },
-      "last_seen": "2025-02-21T09:30:29.501973+00:00"
+      "last_seen": "2025-02-21T13:32:14.825888+00:00"
     },
     {
-      "state": {"entity_id":"conversation.mfdoom_deepseek_coder_v2_tool_calling","state":"2025-02-21T09:23:13.277315+00:00","attributes":{"friendly_name":"MFDoom/deepseek-coder-v2-tool-calling","supported_features":1},"last_changed":"2025-02-21T09:23:13.277327+00:00","last_reported":"2025-02-21T09:23:13.277327+00:00","last_updated":"2025-02-21T09:23:13.277327+00:00","context":{"id":"01JMKX2NXFXD6K2736ZMZN5GQ2","parent_id":null,"user_id":null}},
+      "state": {"entity_id":"automation.announce_assistant_replies_via_friday","state":"on","attributes":{"last_triggered":null,"mode":"single","current":0,"friendly_name":"Announce Assistant Replies via Friday"},"last_changed":"2025-02-21T11:35:05.902500+00:00","last_reported":"2025-02-21T11:35:05.902500+00:00","last_updated":"2025-02-21T11:35:05.902500+00:00","context":{"id":"01JMM4MCDES4AW261JTV5WE21A","parent_id":null,"user_id":null}},
       "extra_data": null,
-      "last_seen": "2025-02-21T09:30:29.501973+00:00"
+      "last_seen": "2025-02-21T13:05:07.468436+00:00"
+    },
+    {
+      "state": {"entity_id":"automation.reply_in_chat_for_text_queries","state":"on","attributes":{"last_triggered":null,"mode":"single","current":0,"friendly_name":"Reply in Chat for Text Queries"},"last_changed":"2025-02-21T11:35:05.902604+00:00","last_reported":"2025-02-21T11:35:05.902604+00:00","last_updated":"2025-02-21T11:35:05.902604+00:00","context":{"id":"01JMM4MCDEYPRNM5TTA1WQ2J1M","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-02-21T13:05:07.468436+00:00"
     },
     {
       "state": {"entity_id":"conversation.mfdoom_deepseek_r1_tool_calling_14b","state":"2025-02-21T09:15:33.428051+00:00","attributes":{"friendly_name":"MFDoom/deepseek-r1-tool-calling:14b","supported_features":1},"last_changed":"2025-02-21T09:15:33.428066+00:00","last_reported":"2025-02-21T09:15:33.428066+00:00","last_updated":"2025-02-21T09:15:33.428066+00:00","context":{"id":"01JMKWMKR9FP729W56DHPE828Y","parent_id":null,"user_id":null}},
       "extra_data": null,
       "last_seen": "2025-02-21T09:18:34.590522+00:00"
-    },
-    {
-      "state": {"entity_id":"conversation.mfdoom_deepseek_v2_tool_calling_16b","state":"2025-02-21T07:01:23.911146+00:00","attributes":{"friendly_name":"MFDoom/deepseek-v2-tool-calling:16b","supported_features":1},"last_changed":"2025-02-21T07:07:37.531800+00:00","last_reported":"2025-02-21T07:07:37.531800+00:00","last_updated":"2025-02-21T07:07:37.531800+00:00","context":{"id":"01JMKNAM5V20DA0PE9VCFJRE14","parent_id":null,"user_id":null}},
-      "extra_data": null,
-      "last_seen": "2025-02-21T07:19:48.073016+00:00"
     },
     {
       "state": {"entity_id":"conversation.rns96_deepseek_r1_ablated_f16_q4km","state":"unknown","attributes":{"friendly_name":"rns96/deepseek-R1-ablated:f16_Q4KM","supported_features":1},"last_changed":"2025-02-21T06:54:48.572347+00:00","last_reported":"2025-02-21T06:54:48.572347+00:00","last_updated":"2025-02-21T06:54:48.572347+00:00","context":{"id":"01JMKMK57WCH6WR38PRKMK51QP","parent_id":null,"user_id":null}},
@@ -134,48 +186,6 @@
       "state": {"entity_id":"script.handle_n8n_query","state":"off","attributes":{"last_triggered":null,"mode":"single","current":0,"friendly_name":"Handle n8n Query"},"last_changed":"2025-02-20T10:39:58.478234+00:00","last_reported":"2025-02-20T10:39:58.478234+00:00","last_updated":"2025-02-20T10:39:58.478234+00:00","context":{"id":"01JMHF2QGEYV3JD3JEQK2MG0J4","parent_id":null,"user_id":null}},
       "extra_data": null,
       "last_seen": "2025-02-20T10:40:00.309177+00:00"
-    },
-    {
-      "state": {"entity_id":"select.my_satellite_assistant_2","state":"Jarvis","attributes":{"options":["preferred","Friday","Home Assistant","Jarvis"],"friendly_name":"my satellite Assistant"},"last_changed":"2025-02-20T06:26:45.258045+00:00","last_reported":"2025-02-20T06:26:45.258045+00:00","last_updated":"2025-02-20T06:26:45.258045+00:00","context":{"id":"01JMH0K2CABB7QQC1CSM6PAR36","parent_id":null,"user_id":null}},
-      "extra_data": null,
-      "last_seen": "2025-02-20T06:26:46.237650+00:00"
-    },
-    {
-      "state": {"entity_id":"select.my_satellite_noise_suppression_level_2","state":"off","attributes":{"options":["off","low","medium","high","max"],"friendly_name":"my satellite Noise suppression level"},"last_changed":"2025-02-20T06:26:45.258152+00:00","last_reported":"2025-02-20T06:26:45.258152+00:00","last_updated":"2025-02-20T06:26:45.258152+00:00","context":{"id":"01JMH0K2CAR25TZVWV1K2R5JYP","parent_id":null,"user_id":null}},
-      "extra_data": null,
-      "last_seen": "2025-02-20T06:26:46.237650+00:00"
-    },
-    {
-      "state": {"entity_id":"select.my_satellite_finished_speaking_detection_2","state":"aggressive","attributes":{"options":["default","relaxed","aggressive"],"friendly_name":"my satellite Finished speaking detection"},"last_changed":"2025-02-20T06:26:45.258250+00:00","last_reported":"2025-02-20T06:26:45.258250+00:00","last_updated":"2025-02-20T06:26:45.258250+00:00","context":{"id":"01JMH0K2CAGZ44XSSKV71S5G00","parent_id":null,"user_id":null}},
-      "extra_data": null,
-      "last_seen": "2025-02-20T06:26:46.237650+00:00"
-    },
-    {
-      "state": {"entity_id":"switch.my_satellite_mute_2","state":"off","attributes":{"friendly_name":"my satellite Mute"},"last_changed":"2025-02-20T06:26:45.258744+00:00","last_reported":"2025-02-20T06:26:45.258744+00:00","last_updated":"2025-02-20T06:26:45.258744+00:00","context":{"id":"01JMH0K2CAKJXG1JETDP9QA7P4","parent_id":null,"user_id":null}},
-      "extra_data": null,
-      "last_seen": "2025-02-20T06:26:46.237650+00:00"
-    },
-    {
-      "state": {"entity_id":"number.my_satellite_auto_gain_2","state":"14","attributes":{"min":0,"max":31,"step":1.0,"mode":"auto","friendly_name":"my satellite Auto gain"},"last_changed":"2025-02-20T06:26:45.259446+00:00","last_reported":"2025-02-20T06:26:45.259514+00:00","last_updated":"2025-02-20T06:26:45.259446+00:00","context":{"id":"01JMH0K2CB7A7P9PYTX9CNQZ5P","parent_id":null,"user_id":null}},
-      "extra_data": {
-        "native_max_value": 31,
-        "native_min_value": 0,
-        "native_step": null,
-        "native_unit_of_measurement": null,
-        "native_value": 14
-      },
-      "last_seen": "2025-02-20T06:26:46.237650+00:00"
-    },
-    {
-      "state": {"entity_id":"number.my_satellite_mic_volume_2","state":"8.8","attributes":{"min":0.1,"max":10.0,"step":0.1,"mode":"auto","friendly_name":"my satellite Mic volume"},"last_changed":"2025-02-20T06:26:45.259669+00:00","last_reported":"2025-02-20T06:26:45.259716+00:00","last_updated":"2025-02-20T06:26:45.259669+00:00","context":{"id":"01JMH0K2CB5Y3FB9130MXAK04W","parent_id":null,"user_id":null}},
-      "extra_data": {
-        "native_max_value": 10.0,
-        "native_min_value": 0.1,
-        "native_step": 0.1,
-        "native_unit_of_measurement": null,
-        "native_value": 8.8
-      },
-      "last_seen": "2025-02-20T06:26:46.237650+00:00"
     },
     {
       "state": {"entity_id":"conversation.mfdoom_deepseek_r1_tool_calling_8b_2","state":"2025-02-18T16:53:16.346767+00:00","attributes":{"friendly_name":"MFDoom/deepseek-r1-tool-calling:8b","supported_features":1},"last_changed":"2025-02-18T16:53:16.346781+00:00","last_reported":"2025-02-18T16:53:16.346781+00:00","last_updated":"2025-02-18T16:53:16.346781+00:00","context":{"id":"01JMCZMFJFEWDJHWGYGHBGCBT8","parent_id":null,"user_id":null}},

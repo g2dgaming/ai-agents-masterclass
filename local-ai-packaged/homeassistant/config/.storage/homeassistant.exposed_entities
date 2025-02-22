@@ -39,6 +39,20 @@
             "should_expose": false
           }
         }
+      },
+      "automation.announce_assistant_replies_via_friday": {
+        "assistants": {
+          "conversation": {
+            "should_expose": false
+          }
+        }
+      },
+      "automation.reply_in_chat_for_text_queries": {
+        "assistants": {
+          "conversation": {
+            "should_expose": false
+          }
+        }
       }
     }
   }
