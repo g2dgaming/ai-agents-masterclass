@@ -20,11 +20,11 @@
         "prefer_local_intents": false
       },
       {
-        "conversation_engine": "conversation.rns96_deepseek_r1_ablated_f32_q80",
+        "conversation_engine": "conversation.n8n_agent",
         "conversation_language": "*",
         "id": "01jmkpscekeev1xkn681essqve",
         "language": "en",
-        "name": "Friday",
+        "name": "Eric",
         "stt_engine": "stt.faster_whisper",
         "stt_language": "en",
         "tts_engine": "marytts",

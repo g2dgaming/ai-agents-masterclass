@@ -1,0 +1,480 @@
+2025-03-12 08:27:26.696 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration n8n_conversation_agent which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
+2025-03-12 08:27:27.392 WARNING (Recorder) [homeassistant.components.recorder.util] The system could not validate that the sqlite3 database at //config/home-assistant_v2.db was shutdown cleanly
+2025-03-12 08:27:27.408 WARNING (Recorder) [homeassistant.components.recorder.util] Ended unfinished session (id=249 from 2025-03-11 18:51:48.074504)
+2025-03-12 08:27:29.399 WARNING (MainThread) [homeassistant.helpers.frame] Detected that custom integration 'n8n_conversation_agent' calls async_forward_entry_setup for integration, n8n_conversation_agent with title: N8N Test Agent and entry_id: 01JMPSX9JM9HQPH8YP18XSJCAZ, which is deprecated, await async_forward_entry_setups instead at custom_components/n8n_conversation_agent/__init__.py, line 17: hass.async_create_task(. This will stop working in Home Assistant 2025.6, please report it to the author of the 'n8n_conversation_agent' custom integration
+2025-03-12 08:27:30.037 WARNING (MainThread) [homeassistant.helpers.frame] Detected code that calls async_forward_entry_setup for integration n8n_conversation_agent with title: N8N Test Agent and entry_id: 01JMPSX9JM9HQPH8YP18XSJCAZ, during setup without awaiting async_forward_entry_setup, which can cause the setup lock to be released before the setup is done. This will stop working in Home Assistant 2025.1, please report this issue
+Stack (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/usr/src/homeassistant/homeassistant/__main__.py", line 227, in <module>
+    sys.exit(main())
+  File "/usr/src/homeassistant/homeassistant/__main__.py", line 213, in main
+    exit_code = runner.run(runtime_conf)
+  File "/usr/src/homeassistant/homeassistant/runner.py", line 154, in run
+    return loop.run_until_complete(setup_and_run_hass(runtime_config))
+  File "/usr/local/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
+    self.run_forever()
+  File "/usr/local/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
+    self._run_once()
+  File "/usr/local/lib/python3.13/asyncio/base_events.py", line 2040, in _run_once
+    handle._run()
+  File "/usr/local/lib/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "/usr/src/homeassistant/homeassistant/config_entries.py", line 2607, in async_forward_entry_setup
+    _report_non_awaited_platform_forwards(entry, "async_forward_entry_setup")
+  File "/usr/src/homeassistant/homeassistant/config_entries.py", line 1313, in _report_non_awaited_platform_forwards
+    report_usage(
+  File "/usr/src/homeassistant/homeassistant/helpers/frame.py", line 234, in report_usage
+    _LOGGER.warning(msg, stack_info=True)
+2025-03-12 08:27:30.037 WARNING (MainThread) [homeassistant.helpers.frame] Detected code that calls async_forward_entry_setup for integration n8n_conversation_agent with title: N8N Agent and entry_id: 01JMQ0ZEPBSD9GNZNC109WTFEY, during setup without awaiting async_forward_entry_setup, which can cause the setup lock to be released before the setup is done. This will stop working in Home Assistant 2025.1, please report this issue
+Stack (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/usr/src/homeassistant/homeassistant/__main__.py", line 227, in <module>
+    sys.exit(main())
+  File "/usr/src/homeassistant/homeassistant/__main__.py", line 213, in main
+    exit_code = runner.run(runtime_conf)
+  File "/usr/src/homeassistant/homeassistant/runner.py", line 154, in run
+    return loop.run_until_complete(setup_and_run_hass(runtime_config))
+  File "/usr/local/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
+    self.run_forever()
+  File "/usr/local/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
+    self._run_once()
+  File "/usr/local/lib/python3.13/asyncio/base_events.py", line 2040, in _run_once
+    handle._run()
+  File "/usr/local/lib/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "/usr/src/homeassistant/homeassistant/config_entries.py", line 2607, in async_forward_entry_setup
+    _report_non_awaited_platform_forwards(entry, "async_forward_entry_setup")
+  File "/usr/src/homeassistant/homeassistant/config_entries.py", line 1313, in _report_non_awaited_platform_forwards
+    report_usage(
+  File "/usr/src/homeassistant/homeassistant/helpers/frame.py", line 234, in report_usage
+    _LOGGER.warning(msg, stack_info=True)
+2025-03-12 08:28:08.601 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 08:35:27.806 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 08:38:48.664 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 09:05:33.606 ERROR (MainThread) [homeassistant] Error doing job: Task exception was never retrieved (None)
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/components/assist_satellite/entity.py", line 387, in async_accept_pipeline_from_satellite
+    await self._pipeline_task
+  File "/usr/src/homeassistant/homeassistant/components/assist_pipeline/__init__.py", line 138, in async_pipeline_from_audio_stream
+    await pipeline_input.validate()
+  File "/usr/src/homeassistant/homeassistant/components/assist_pipeline/pipeline.py", line 1661, in validate
+    await asyncio.gather(*prepare_tasks)
+  File "/usr/src/homeassistant/homeassistant/components/assist_pipeline/pipeline.py", line 870, in prepare_speech_to_text
+    raise SpeechToTextError(
+    ...<2 lines>...
+    )
+homeassistant.components.assist_pipeline.error.SpeechToTextError: Pipeline error code=stt-provider-missing, message=No speech-to-text provider for: stt.faster_whisper
+2025-03-12 09:06:22.529 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 09:11:24.093 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 09:33:01.802 ERROR (MainThread) [homeassistant] Error doing job: Task exception was never retrieved (None)
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/components/assist_satellite/entity.py", line 387, in async_accept_pipeline_from_satellite
+    await self._pipeline_task
+  File "/usr/src/homeassistant/homeassistant/components/assist_pipeline/__init__.py", line 138, in async_pipeline_from_audio_stream
+    await pipeline_input.validate()
+  File "/usr/src/homeassistant/homeassistant/components/assist_pipeline/pipeline.py", line 1661, in validate
+    await asyncio.gather(*prepare_tasks)
+  File "/usr/src/homeassistant/homeassistant/components/assist_pipeline/pipeline.py", line 870, in prepare_speech_to_text
+    raise SpeechToTextError(
+    ...<2 lines>...
+    )
+homeassistant.components.assist_pipeline.error.SpeechToTextError: Pipeline error code=stt-provider-missing, message=No speech-to-text provider for: stt.faster_whisper
+2025-03-12 09:33:31.750 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 09:44:22.535 ERROR (MainThread) [homeassistant] Error doing job: Task exception was never retrieved (None)
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/components/assist_satellite/entity.py", line 387, in async_accept_pipeline_from_satellite
+    await self._pipeline_task
+  File "/usr/src/homeassistant/homeassistant/components/assist_pipeline/__init__.py", line 138, in async_pipeline_from_audio_stream
+    await pipeline_input.validate()
+  File "/usr/src/homeassistant/homeassistant/components/assist_pipeline/pipeline.py", line 1661, in validate
+    await asyncio.gather(*prepare_tasks)
+  File "/usr/src/homeassistant/homeassistant/components/assist_pipeline/pipeline.py", line 870, in prepare_speech_to_text
+    raise SpeechToTextError(
+    ...<2 lines>...
+    )
+homeassistant.components.assist_pipeline.error.SpeechToTextError: Pipeline error code=stt-provider-missing, message=No speech-to-text provider for: stt.faster_whisper
+2025-03-12 09:46:51.459 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 10:36:05.430 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 10:53:46.624 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:02:09.480 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:09:53.959 ERROR (MainThread) [homeassistant] Error doing job: Task exception was never retrieved (None)
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/components/assist_satellite/entity.py", line 387, in async_accept_pipeline_from_satellite
+    await self._pipeline_task
+  File "/usr/src/homeassistant/homeassistant/components/assist_pipeline/__init__.py", line 138, in async_pipeline_from_audio_stream
+    await pipeline_input.validate()
+  File "/usr/src/homeassistant/homeassistant/components/assist_pipeline/pipeline.py", line 1661, in validate
+    await asyncio.gather(*prepare_tasks)
+  File "/usr/src/homeassistant/homeassistant/components/assist_pipeline/pipeline.py", line 870, in prepare_speech_to_text
+    raise SpeechToTextError(
+    ...<2 lines>...
+    )
+homeassistant.components.assist_pipeline.error.SpeechToTextError: Pipeline error code=stt-provider-missing, message=No speech-to-text provider for: stt.faster_whisper
+2025-03-12 11:12:43.851 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:12:46.856 ERROR (MainThread) [aiohttp.server] Error handling request from 172.18.0.8
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_protocol.py", line 480, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_app.py", line 569, in _handle
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_middlewares.py", line 117, in impl
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/security_filter.py", line 92, in security_filter_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/forwarded.py", line 83, in forwarded_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/request_context.py", line 26, in request_context_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/ban.py", line 86, in ban_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/auth.py", line 242, in auth_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/headers.py", line 32, in headers_middleware
+    response = await handler(request)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/helpers/http.py", line 73, in handle
+    result = await handler(request, **request.match_info)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/api/__init__.py", line 430, in post
+    response = await shield(
+               ^^^^^^^^^^^^^
+    ...<8 lines>...
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/core.py", line 2794, in async_call
+    response_data = await coro
+                    ^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/core.py", line 2837, in _execute_service
+    return await target(service_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/helpers/service.py", line 1007, in entity_service_call
+    single_response = await _handle_entity_call(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+        hass, entity, func, data, call.context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/helpers/service.py", line 1079, in _handle_entity_call
+    result = await task
+             ^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/assist_satellite/entity.py", line 206, in async_internal_announce
+    await self.async_announce(announcement)
+  File "/usr/src/homeassistant/homeassistant/components/wyoming/assist_satellite.py", line 270, in async_announce
+    await self._client.write_event(
+    ...<6 lines>...
+    )
+  File "/usr/local/lib/python3.13/site-packages/wyoming/client.py", line 28, in write_event
+    assert self._writer is not None
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+2025-03-12 11:19:25.854 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:19:49.980 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:20:04.925 ERROR (MainThread) [aiohttp.server] Error handling request from 172.18.0.8
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_protocol.py", line 480, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_app.py", line 569, in _handle
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_middlewares.py", line 117, in impl
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/security_filter.py", line 92, in security_filter_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/forwarded.py", line 83, in forwarded_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/request_context.py", line 26, in request_context_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/ban.py", line 86, in ban_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/auth.py", line 242, in auth_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/headers.py", line 32, in headers_middleware
+    response = await handler(request)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/helpers/http.py", line 73, in handle
+    result = await handler(request, **request.match_info)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/api/__init__.py", line 430, in post
+    response = await shield(
+               ^^^^^^^^^^^^^
+    ...<8 lines>...
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/core.py", line 2794, in async_call
+    response_data = await coro
+                    ^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/core.py", line 2837, in _execute_service
+    return await target(service_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/helpers/service.py", line 1007, in entity_service_call
+    single_response = await _handle_entity_call(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+        hass, entity, func, data, call.context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/helpers/service.py", line 1079, in _handle_entity_call
+    result = await task
+             ^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/assist_satellite/entity.py", line 206, in async_internal_announce
+    await self.async_announce(announcement)
+  File "/usr/src/homeassistant/homeassistant/components/wyoming/assist_satellite.py", line 270, in async_announce
+    await self._client.write_event(
+    ...<6 lines>...
+    )
+  File "/usr/local/lib/python3.13/site-packages/wyoming/client.py", line 28, in write_event
+    assert self._writer is not None
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+2025-03-12 11:20:32.007 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:20:38.087 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:20:41.159 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:20:44.295 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:20:50.375 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:20:53.447 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:20:59.527 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:21:02.599 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:21:44.711 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:21:50.791 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:21:53.863 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:21:59.943 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:22:03.015 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:22:09.095 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:22:12.167 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:22:18.247 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:22:21.319 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:22:27.399 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:22:30.471 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:22:36.551 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:22:39.623 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:22:45.703 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:22:48.776 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:22:57.927 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:23:05.031 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:23:08.103 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:23:14.183 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:23:17.255 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:23:23.335 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:23:26.407 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:23:32.487 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:23:35.560 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:23:41.639 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:23:44.711 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:23:50.663 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:23:56.743 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:23:59.815 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:24:05.895 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:24:08.967 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:24:15.047 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:24:18.119 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:24:24.199 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:24:27.271 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:24:33.351 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:24:36.423 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:24:42.503 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:24:45.575 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:24:51.655 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:24:54.727 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:25:00.807 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:25:03.879 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:25:09.959 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:25:13.031 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:25:19.111 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:25:22.183 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:25:28.263 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:25:31.335 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:25:37.159 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:25:43.239 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:25:46.311 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:25:52.391 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:25:55.463 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:26:01.543 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:26:04.615 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:26:10.695 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:26:13.767 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:26:22.919 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:26:25.991 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:26:34.119 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:26:37.191 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:26:43.271 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:26:46.343 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:26:52.423 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:26:55.495 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:27:01.575 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:27:04.647 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:27:10.727 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:27:13.799 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:27:19.879 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:27:22.951 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:27:29.031 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:27:32.103 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:27:38.183 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:27:41.255 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:27:47.335 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:27:50.407 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:27:59.559 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:28:06.663 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:28:09.735 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:28:15.815 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:28:18.887 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:28:24.967 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:28:28.039 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:28:34.119 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:28:37.191 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:28:43.272 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:28:46.343 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:28:52.423 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:28:55.495 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:29:01.575 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:29:04.647 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:29:10.727 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:29:13.799 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:29:19.879 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:29:22.951 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:29:29.031 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:29:32.103 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:29:49.383 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:29:55.463 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:29:58.535 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:30:04.423 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:30:10.503 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:30:13.575 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:30:19.655 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:30:22.727 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:30:28.807 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:30:31.879 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:30:37.959 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:30:41.031 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:30:47.111 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:30:50.183 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:30:56.263 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:31:41.425 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:32:59.560 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:35:16.743 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:37:36.007 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:39:55.271 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:42:14.535 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:44:33.799 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:46:53.063 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:52:13.481 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:54:31.815 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:56:51.079 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 11:59:10.343 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 12:01:29.607 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 12:03:48.871 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 12:06:08.135 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 12:07:58.802 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 12:10:17.991 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 12:12:37.255 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 12:12:52.438 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 12:13:22.040 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 13:40:25.051 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 13:42:43.975 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 13:43:10.096 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 13:45:27.815 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 13:47:47.079 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 13:48:11.193 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 13:50:26.823 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 13:52:46.087 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 13:54:26.804 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 13:56:43.655 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 13:58:10.620 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 14:00:28.935 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 14:12:30.142 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 14:14:49.095 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 14:17:08.359 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 14:19:27.623 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 14:21:46.887 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 14:24:06.151 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 14:26:25.415 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 14:28:44.679 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 14:31:03.943 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 14:32:42.377 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 14:35:01.511 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 14:37:20.775 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 14:39:40.039 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 14:41:59.303 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 14:44:18.567 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 14:46:37.831 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 14:49:10.909 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 14:51:28.647 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 14:53:47.911 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 14:56:07.175 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 14:58:26.439 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 15:00:45.703 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 15:03:04.967 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 15:04:59.825 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 15:07:18.919 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 15:09:38.183 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 15:11:57.447 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 15:14:16.711 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 15:16:35.975 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 15:18:55.239 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 15:21:18.062 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 15:23:33.767 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 15:25:53.031 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 15:28:12.295 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 15:30:31.559 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 15:32:50.823 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 15:35:10.087 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 15:37:03.139 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 15:39:19.943 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 15:41:39.207 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 15:43:58.471 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 15:46:17.735 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 15:48:38.550 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 15:50:56.263 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 15:53:15.527 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 15:55:34.791 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 15:57:54.055 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 16:00:13.319 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 16:02:32.583 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 16:04:51.847 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 16:05:03.961 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 16:07:23.399 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 16:09:42.663 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 16:12:01.927 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 16:14:21.191 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 16:16:40.455 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 16:18:59.719 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 16:21:18.983 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 16:23:38.247 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 16:25:57.511 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 16:28:16.775 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 16:30:36.039 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 16:32:55.303 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 16:35:14.567 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 16:37:03.029 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 16:38:05.637 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 16:40:21.767 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 16:44:53.583 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 16:47:11.367 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 16:49:30.631 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 16:51:49.895 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 16:54:09.159 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 16:56:28.423 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 16:58:47.687 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 17:00:44.400 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 17:03:01.639 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 17:04:23.343 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 17:06:42.823 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 17:09:02.087 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-12 17:11:21.351 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+                                                                                                                                                               

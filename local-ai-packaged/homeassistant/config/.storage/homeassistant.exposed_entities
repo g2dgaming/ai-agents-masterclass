@@ -22,7 +22,7 @@
       "sun.sun": {
         "assistants": {
           "conversation": {
-            "should_expose": false
+            "should_expose": true
           }
         }
       },

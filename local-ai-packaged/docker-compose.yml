@@ -23,6 +23,8 @@ x-n8n: &service-n8n
     - N8N_PERSONALIZATION_ENABLED=false
     - N8N_ENCRYPTION_KEY
     - N8N_USER_MANAGEMENT_JWT_SECRET
+    - WEBHOOK_URL=http://192.168.1.36:5678
+    - VUE_APP_WEBHOOK_URL=http://192.168.1.36:5678
   links:
     - postgres
 
@@ -34,8 +36,7 @@ x-ollama: &service-ollama
   ports:
     - 11434:11434
   volumes:
-    - /home/samarth/samsung_t7/ollama:/root/.ollama
-    - ./ollama_custom_models:/root/ollam_custom_models
+    - ~/samsung_t7/ollama:/root/.ollama
 x-init-ollama: &init-ollama
   image: ollama/ollama:latest
   networks: ['demo']
@@ -45,7 +46,7 @@ x-init-ollama: &init-ollama
   entrypoint: /bin/sh
   command:
     - "-c"
-    - "sleep 3; OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-coder-v2-tool-calling:latest; OLLAMA_HOST=ollama:11434 ollama pull nomic-embed-text;OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-r1-tool-calling:8b;OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-r1-tool-calling:14b;OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-r1-tool-calling:32b;OLLAMA_HOST=ollama:11434 ollama run qwen2.5:32b;OLLAMA_HOST=ollama:11434 ollama pull rns96/deepseek-R1-ablated:f32_Q80;OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-v2-tool-calling:16b;OLLAMA_HOST=ollama:11434 ollama pull MFDoom/deepseek-r1-tool-calling:8b-llama-distill-fp16"
+    - "OLLAMA_HOST=ollama:11434 ollama pull hermes3:8b-llama3.1-fp16"
 
 services:
   flowise:
@@ -119,6 +120,8 @@ services:
       - ./shared:/data/shared
     environment:
       - N8N_SECURE_COOKIE=${N8N_SECURE_COOKIE}
+      - WEBHOOK_URL=http://192.168.1.36:5678
+      - VUE_APP_WEBHOOK_URL=http://192.168.1.36:5678
     depends_on:
       postgres:
         condition: service_healthy
@@ -154,9 +157,17 @@ services:
     volumes:
       - whisper_cache:/config/models
 
+  web_scraper:
+      build:
+        context: ./web_scraper
+      container_name: fastapi_crawler
+      restart: unless-stopped
+      ports:
+        - "6969:6969"
   coqui-tts:
-    image: ghcr.io/coqui-ai/tts:latest
     container_name: coqui-tts
+    build:
+      context: ./TTS
     privileged: true
     ports:
       - "5002:5002"
@@ -165,7 +176,7 @@ services:
       nvidia
     networks:
       - demo
-    entrypoint: ["python3", "TTS/server/server.py", "--model_name","tts_models/en/ljspeech/glow-tts", "--use_cuda", "true"]
+    entrypoint: ["python3", "TTS/server/server.py", "--model_name","tts_models/en/vctk/vits"]
     volumes:
       - coqui_tts_storage:/data
     environment:
@@ -212,6 +223,8 @@ services:
       - "10400:10400"
     networks:
       - demo
+    depends_on:
+      - satellite
   homeassistant:
     container_name: homeassistant
     image: "ghcr.io/home-assistant/home-assistant:dev"

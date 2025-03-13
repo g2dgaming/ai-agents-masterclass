@@ -1,17 +1,40 @@
-#confiuration.yaml
-# Loads default set of integrations. Do not remove.
 default_config:
 
 frontend:
   themes: !include_dir_merge_named themes
+
+logger:
+  default: warning
+  logs:
+    homeassistant.components.intent: debug
+
 tts:
   - platform: "marytts"
     host: coqui-tts
     port: 5002
 
+conversation:
+  intents:
+    PlayMusic:
+      - "Play {query}"
 
-automation: !include automations.yaml
-script: !include scripts.yaml
-scene: !include scenes.yaml
+intent_script:
+  PlayMusic:
+    speech:
+      text: "Playing {{ query }}"
+    action:
+      - service: rest_command.forward_music_query
+        data_template:
+          query: "{{ query }}"
 
 
+rest_command:
+  forward_music_query:
+    url: "http://n8n:5678/webhook-test/home-assistant"
+    method: "post"
+    headers:
+      Content-Type: "application/json"
+    payload: >
+      {
+        "query": "{{ query }}"
+      }
