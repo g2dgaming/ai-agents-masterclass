@@ -1,8 +1,6 @@
-2025-03-13 06:55:31.922 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration n8n_conversation_agent which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
-2025-03-13 06:55:33.675 WARNING (Recorder) [homeassistant.components.recorder.util] The system could not validate that the sqlite3 database at //config/home-assistant_v2.db was shutdown cleanly
-2025-03-13 06:55:33.695 WARNING (Recorder) [homeassistant.components.recorder.util] Ended unfinished session (id=250 from 2025-03-12 08:27:27.374905)
-2025-03-13 06:55:35.775 WARNING (MainThread) [homeassistant.helpers.frame] Detected that custom integration 'n8n_conversation_agent' calls async_forward_entry_setup for integration, n8n_conversation_agent with title: N8N Test Agent and entry_id: 01JMPSX9JM9HQPH8YP18XSJCAZ, which is deprecated, await async_forward_entry_setups instead at custom_components/n8n_conversation_agent/__init__.py, line 17: hass.async_create_task(. This will stop working in Home Assistant 2025.6, please report it to the author of the 'n8n_conversation_agent' custom integration
-2025-03-13 06:55:36.349 WARNING (MainThread) [homeassistant.helpers.frame] Detected code that calls async_forward_entry_setup for integration n8n_conversation_agent with title: N8N Test Agent and entry_id: 01JMPSX9JM9HQPH8YP18XSJCAZ, during setup without awaiting async_forward_entry_setup, which can cause the setup lock to be released before the setup is done. This will stop working in Home Assistant 2025.1, please report this issue
+2025-03-13 09:51:03.605 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration n8n_conversation_agent which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
+2025-03-13 09:51:07.648 WARNING (MainThread) [homeassistant.helpers.frame] Detected that custom integration 'n8n_conversation_agent' calls async_forward_entry_setup for integration, n8n_conversation_agent with title: N8N Test Agent and entry_id: 01JMPSX9JM9HQPH8YP18XSJCAZ, which is deprecated, await async_forward_entry_setups instead at custom_components/n8n_conversation_agent/__init__.py, line 17: hass.async_create_task(. This will stop working in Home Assistant 2025.6, please report it to the author of the 'n8n_conversation_agent' custom integration
+2025-03-13 09:51:07.710 WARNING (MainThread) [homeassistant.helpers.frame] Detected code that calls async_forward_entry_setup for integration n8n_conversation_agent with title: N8N Test Agent and entry_id: 01JMPSX9JM9HQPH8YP18XSJCAZ, during setup without awaiting async_forward_entry_setup, which can cause the setup lock to be released before the setup is done. This will stop working in Home Assistant 2025.1, please report this issue
 Stack (most recent call last):
   File "<frozen runpy>", line 198, in _run_module_as_main
   File "<frozen runpy>", line 88, in _run_code
@@ -26,7 +24,7 @@ Stack (most recent call last):
     report_usage(
   File "/usr/src/homeassistant/homeassistant/helpers/frame.py", line 234, in report_usage
     _LOGGER.warning(msg, stack_info=True)
-2025-03-13 06:55:36.350 WARNING (MainThread) [homeassistant.helpers.frame] Detected code that calls async_forward_entry_setup for integration n8n_conversation_agent with title: N8N Agent and entry_id: 01JMQ0ZEPBSD9GNZNC109WTFEY, during setup without awaiting async_forward_entry_setup, which can cause the setup lock to be released before the setup is done. This will stop working in Home Assistant 2025.1, please report this issue
+2025-03-13 09:51:07.711 WARNING (MainThread) [homeassistant.helpers.frame] Detected code that calls async_forward_entry_setup for integration n8n_conversation_agent with title: N8N Agent and entry_id: 01JMQ0ZEPBSD9GNZNC109WTFEY, during setup without awaiting async_forward_entry_setup, which can cause the setup lock to be released before the setup is done. This will stop working in Home Assistant 2025.1, please report this issue
 Stack (most recent call last):
   File "<frozen runpy>", line 198, in _run_module_as_main
   File "<frozen runpy>", line 88, in _run_code
@@ -50,118 +48,3 @@ Stack (most recent call last):
     report_usage(
   File "/usr/src/homeassistant/homeassistant/helpers/frame.py", line 234, in report_usage
     _LOGGER.warning(msg, stack_info=True)
-2025-03-13 07:52:07.686 ERROR (MainThread) [aiohttp.server] Error handling request from 172.18.0.8
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_protocol.py", line 480, in _handle_request
-    resp = await request_handler(request)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_app.py", line 569, in _handle
-    return await handler(request)
-           ^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_middlewares.py", line 117, in impl
-    return await handler(request)
-           ^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/components/http/security_filter.py", line 92, in security_filter_middleware
-    return await handler(request)
-           ^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/components/http/forwarded.py", line 83, in forwarded_middleware
-    return await handler(request)
-           ^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/components/http/request_context.py", line 26, in request_context_middleware
-    return await handler(request)
-           ^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/components/http/ban.py", line 86, in ban_middleware
-    return await handler(request)
-           ^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/components/http/auth.py", line 242, in auth_middleware
-    return await handler(request)
-           ^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/components/http/headers.py", line 32, in headers_middleware
-    response = await handler(request)
-               ^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/helpers/http.py", line 73, in handle
-    result = await handler(request, **request.match_info)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/components/api/__init__.py", line 430, in post
-    response = await shield(
-               ^^^^^^^^^^^^^
-    ...<8 lines>...
-    )
-    ^
-  File "/usr/src/homeassistant/homeassistant/core.py", line 2794, in async_call
-    response_data = await coro
-                    ^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/core.py", line 2837, in _execute_service
-    return await target(service_call)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/helpers/service.py", line 1007, in entity_service_call
-    single_response = await _handle_entity_call(
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
-        hass, entity, func, data, call.context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/src/homeassistant/homeassistant/helpers/service.py", line 1079, in _handle_entity_call
-    result = await task
-             ^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/components/assist_satellite/entity.py", line 199, in async_internal_announce
-    raise SatelliteBusyError
-homeassistant.components.assist_satellite.errors.SatelliteBusyError
-2025-03-13 07:52:36.337 ERROR (MainThread) [aiohttp.server] Error handling request from 172.18.0.8
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_protocol.py", line 480, in _handle_request
-    resp = await request_handler(request)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_app.py", line 569, in _handle
-    return await handler(request)
-           ^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_middlewares.py", line 117, in impl
-    return await handler(request)
-           ^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/components/http/security_filter.py", line 92, in security_filter_middleware
-    return await handler(request)
-           ^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/components/http/forwarded.py", line 83, in forwarded_middleware
-    return await handler(request)
-           ^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/components/http/request_context.py", line 26, in request_context_middleware
-    return await handler(request)
-           ^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/components/http/ban.py", line 86, in ban_middleware
-    return await handler(request)
-           ^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/components/http/auth.py", line 242, in auth_middleware
-    return await handler(request)
-           ^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/components/http/headers.py", line 32, in headers_middleware
-    response = await handler(request)
-               ^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/helpers/http.py", line 73, in handle
-    result = await handler(request, **request.match_info)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/components/api/__init__.py", line 430, in post
-    response = await shield(
-               ^^^^^^^^^^^^^
-    ...<8 lines>...
-    )
-    ^
-  File "/usr/src/homeassistant/homeassistant/core.py", line 2794, in async_call
-    response_data = await coro
-                    ^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/core.py", line 2837, in _execute_service
-    return await target(service_call)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/helpers/service.py", line 1007, in entity_service_call
-    single_response = await _handle_entity_call(
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
-        hass, entity, func, data, call.context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/src/homeassistant/homeassistant/helpers/service.py", line 1079, in _handle_entity_call
-    result = await task
-             ^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/components/assist_satellite/entity.py", line 199, in async_internal_announce
-    raise SatelliteBusyError
-homeassistant.components.assist_satellite.errors.SatelliteBusyError
-2025-03-13 08:57:04.510 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
