@@ -3,7 +3,6 @@ volumes:
   postgres_storage:
   qdrant_storage:
   open-webui_storage:
-  flowise_storage:
   whisper_cache:
   coqui_tts_storage:
   home-assistant_storage:
@@ -49,20 +48,6 @@ x-init-ollama: &init-ollama
     - "OLLAMA_HOST=ollama:11434 ollama pull hermes3:8b-llama3.1-fp16"
 
 services:
-  flowise:
-    image: flowiseai/flowise
-    networks: ['demo']
-    restart: unless-stopped
-    container_name: flowise
-    environment:
-        - PORT=3001
-    ports:
-        - "3001:3001"
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-    volumes:
-        - flowise_storage:/root/.flowise
-    entrypoint: /bin/sh -c "sleep 3; flowise start"
 
   open-webui:
     image: ghcr.io/open-webui/open-webui:main
@@ -190,6 +175,25 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    privileged: true
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - WEBUI_PORT=8080
+      - TORRENTING_PORT=6881
+    volumes:
+      - ./config:/config
+      - ./downloads:/downloads #optional
+    ports:
+      - 8080:8080
+      - 6881:6881
+      - 6881:6881/udp
+    restart: unless-stopped
+    networks: ['demo']
   portainer:
     container_name: portainer
     image: portainer/portainer-ce
@@ -233,6 +237,16 @@ services:
     depends_on:
       satellite:
         condition: service_healthy
+  redis:
+    image: redis:alpine
+    container_name: redis
+    command: redis-server --appendonly yes
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis_data:/data
+    restart: always
+
   homeassistant:
     container_name: homeassistant
     image: "ghcr.io/home-assistant/home-assistant:dev"
@@ -268,6 +282,64 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
+  plex:
+      image: linuxserver/plex:latest
+      container_name: plex
+      environment:
+        - PUID=1000
+        - PGID=1000
+        - VERSION=docker
+      volumes:
+        - ./config/plex:/config
+        - /home/samarth/samsung_t7/media:/media
+      ports:
+        - "32400:32400"
+      restart: unless-stopped
+      networks: ['demo']
+
+  sonarr:
+    image: linuxserver/sonarr:latest
+    container_name: sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ./config/sonarr:/config
+      - /home/samarth/samsung_t7/media/tvshows:/tv
+      - /home/samarth/samsung_t7/downloads:/downloads
+    ports:
+      - "8989:8989"
+    restart: unless-stopped
+    networks: ['demo']
+
+  radarr:
+    image: linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ./config/radarr:/config
+      - /home/samarth/samsung_t7/media/movies:/movies
+      - /home/samarth/samsung_t7/downloads:/downloads
+    ports:
+      - "7878:7878"
+    restart: unless-stopped
+    networks: ['demo']
+
+  prowlarr:
+    image: linuxserver/prowlarr:latest
+    container_name: prowlarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ./config/prowlarr:/config
+    ports:
+      - "9696:9696"
+    restart: unless-stopped
+    networks: ['demo']
+
 
   ollama-pull-llama-cpu:
     profiles: ["cpu"]

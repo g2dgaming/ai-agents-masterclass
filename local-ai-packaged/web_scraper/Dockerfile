@@ -1,5 +1,5 @@
 # Use official Python image
-FROM python:3.11
+FROM crawl4ai
 
 # Set the working directory inside the container
 WORKDIR /app

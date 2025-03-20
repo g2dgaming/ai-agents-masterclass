@@ -1,6 +1,8 @@
-2025-03-13 09:17:17.394 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration n8n_conversation_agent which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
-2025-03-13 09:17:21.060 WARNING (MainThread) [homeassistant.helpers.frame] Detected that custom integration 'n8n_conversation_agent' calls async_forward_entry_setup for integration, n8n_conversation_agent with title: N8N Test Agent and entry_id: 01JMPSX9JM9HQPH8YP18XSJCAZ, which is deprecated, await async_forward_entry_setups instead at custom_components/n8n_conversation_agent/__init__.py, line 17: hass.async_create_task(. This will stop working in Home Assistant 2025.6, please report it to the author of the 'n8n_conversation_agent' custom integration
-2025-03-13 09:17:21.654 WARNING (MainThread) [homeassistant.helpers.frame] Detected code that calls async_forward_entry_setup for integration n8n_conversation_agent with title: N8N Test Agent and entry_id: 01JMPSX9JM9HQPH8YP18XSJCAZ, during setup without awaiting async_forward_entry_setup, which can cause the setup lock to be released before the setup is done. This will stop working in Home Assistant 2025.1, please report this issue
+2025-03-20 14:34:30.137 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration n8n_conversation_agent which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
+2025-03-20 14:34:30.744 WARNING (Recorder) [homeassistant.components.recorder.util] The system could not validate that the sqlite3 database at //config/home-assistant_v2.db was shutdown cleanly
+2025-03-20 14:34:30.752 WARNING (Recorder) [homeassistant.components.recorder.util] Ended unfinished session (id=262 from 2025-03-19 15:10:16.743566)
+2025-03-20 14:34:32.760 WARNING (MainThread) [homeassistant.helpers.frame] Detected that custom integration 'n8n_conversation_agent' calls async_forward_entry_setup for integration, n8n_conversation_agent with title: N8N Test Agent and entry_id: 01JMPSX9JM9HQPH8YP18XSJCAZ, which is deprecated, await async_forward_entry_setups instead at custom_components/n8n_conversation_agent/__init__.py, line 17: hass.async_create_task(. This will stop working in Home Assistant 2025.6, please report it to the author of the 'n8n_conversation_agent' custom integration
+2025-03-20 14:34:33.302 WARNING (MainThread) [homeassistant.helpers.frame] Detected code that calls async_forward_entry_setup for integration n8n_conversation_agent with title: N8N Test Agent and entry_id: 01JMPSX9JM9HQPH8YP18XSJCAZ, during setup without awaiting async_forward_entry_setup, which can cause the setup lock to be released before the setup is done. This will stop working in Home Assistant 2025.1, please report this issue
 Stack (most recent call last):
   File "<frozen runpy>", line 198, in _run_module_as_main
   File "<frozen runpy>", line 88, in _run_code
@@ -24,7 +26,7 @@ Stack (most recent call last):
     report_usage(
   File "/usr/src/homeassistant/homeassistant/helpers/frame.py", line 234, in report_usage
     _LOGGER.warning(msg, stack_info=True)
-2025-03-13 09:17:21.654 WARNING (MainThread) [homeassistant.helpers.frame] Detected code that calls async_forward_entry_setup for integration n8n_conversation_agent with title: N8N Agent and entry_id: 01JMQ0ZEPBSD9GNZNC109WTFEY, during setup without awaiting async_forward_entry_setup, which can cause the setup lock to be released before the setup is done. This will stop working in Home Assistant 2025.1, please report this issue
+2025-03-20 14:34:33.302 WARNING (MainThread) [homeassistant.helpers.frame] Detected code that calls async_forward_entry_setup for integration n8n_conversation_agent with title: N8N Agent and entry_id: 01JMQ0ZEPBSD9GNZNC109WTFEY, during setup without awaiting async_forward_entry_setup, which can cause the setup lock to be released before the setup is done. This will stop working in Home Assistant 2025.1, please report this issue
 Stack (most recent call last):
   File "<frozen runpy>", line 198, in _run_module_as_main
   File "<frozen runpy>", line 88, in _run_code
@@ -48,3 +50,118 @@ Stack (most recent call last):
     report_usage(
   File "/usr/src/homeassistant/homeassistant/helpers/frame.py", line 234, in report_usage
     _LOGGER.warning(msg, stack_info=True)
+2025-03-20 14:35:30.692 WARNING (MainThread) [homeassistant.bootstrap] Waiting on integrations to complete setup: {('wyoming', '01JPP9G91NKCY8AN3E4Z8C1A6T'): 26.254656567}
+2025-03-20 14:36:30.778 WARNING (MainThread) [homeassistant.bootstrap] Waiting on integrations to complete setup: {('wyoming', '01JPP9G91NKCY8AN3E4Z8C1A6T'): 26.254656567}
+2025-03-20 14:37:30.868 WARNING (MainThread) [homeassistant.bootstrap] Waiting on integrations to complete setup: {('wyoming', '01JPP9G91NKCY8AN3E4Z8C1A6T'): 26.254656567}
+2025-03-20 14:41:27.345 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-20 14:41:38.575 ERROR (Recorder) [homeassistant] Error doing job: Task exception was never retrieved (None)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/wyoming/client.py", line 28, in write_event
+    assert self._writer is not None
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+2025-03-20 14:43:45.642 ERROR (MainThread) [aiohttp.server] Error handling request from 192.168.1.35
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_protocol.py", line 480, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_app.py", line 569, in _handle
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_middlewares.py", line 117, in impl
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/security_filter.py", line 92, in security_filter_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/forwarded.py", line 83, in forwarded_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/request_context.py", line 26, in request_context_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/ban.py", line 86, in ban_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/auth.py", line 242, in auth_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/headers.py", line 32, in headers_middleware
+    response = await handler(request)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/helpers/http.py", line 73, in handle
+    result = await handler(request, **request.match_info)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/decorators.py", line 81, in with_admin
+    return await func(self, request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/config/config_entries.py", line 232, in post
+    return await super().post(request, flow_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/data_validator.py", line 74, in wrapper
+    return await method(view, request, data, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/helpers/data_entry_flow.py", line 121, in post
+    result = await self._flow_mgr.async_configure(flow_id, data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/data_entry_flow.py", line 340, in async_configure
+    result = await self._async_configure(flow_id, user_input)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/data_entry_flow.py", line 387, in _async_configure
+    result = await self._async_handle_step(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        flow, cur_step["step_id"], user_input
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/data_entry_flow.py", line 490, in _async_handle_step
+    result: _FlowResultT = await getattr(flow, method)(user_input)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/wyoming/config_flow.py", line 47, in async_step_user
+    service = await WyomingService.create(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/components/wyoming/data.py", line 94, in create
+    info = await load_wyoming_info(host, port)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/wyoming/data.py", line 113, in load_wyoming_info
+    async with AsyncTcpClient(host, port) as client, asyncio.timeout(timeout):
+               ~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/wyoming/client.py", line 35, in __aenter__
+    await self.connect()
+  File "/usr/local/lib/python3.13/site-packages/wyoming/client.py", line 73, in connect
+    self._reader, self._writer = await asyncio.open_connection(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+    )
+    ^
+  File "/usr/local/lib/python3.13/asyncio/streams.py", line 48, in open_connection
+    transport, _ = await loop.create_connection(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        lambda: protocol, host, port, **kwds)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/asyncio/base_events.py", line 1141, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+        exceptions, addrinfo, laddr_infos)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/asyncio/base_events.py", line 1044, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "/usr/local/lib/python3.13/asyncio/selector_events.py", line 641, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/usr/local/lib/python3.13/asyncio/selector_events.py", line 649, in _sock_connect
+    sock.connect(address)
+    ~~~~~~~~~~~~^^^^^^^^^
+OverflowError: connect(): port must be 0-65535.
+2025-03-20 14:44:16.235 ERROR (SyncWorker_3) [custom_components.n8n_conversation_agent.conversation] Request to n8n failed: HTTPConnectionPool(host='n8n', port=5678): Max retries exceeded with url: /webhook/home-assistant (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7a1b8e96de80>: Failed to establish a new connection: [Errno 113] Host is unreachable'))
+2025-03-20 14:50:29.420 ERROR (SyncWorker_5) [custom_components.n8n_conversation_agent.conversation] Request to n8n failed: HTTPConnectionPool(host='n8n', port=5678): Max retries exceeded with url: /webhook/home-assistant (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7a1b8e984550>: Failed to establish a new connection: [Errno 113] Host is unreachable'))
+2025-03-20 14:51:34.316 ERROR (SyncWorker_5) [custom_components.n8n_conversation_agent.conversation] Request to n8n failed: HTTPConnectionPool(host='n8n', port=5678): Max retries exceeded with url: /webhook/home-assistant (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7a1b905a6350>: Failed to establish a new connection: [Errno 113] Host is unreachable'))
+2025-03-20 14:56:38.763 ERROR (SyncWorker_3) [custom_components.n8n_conversation_agent.conversation] Request to n8n failed: HTTPConnectionPool(host='n8n', port=5678): Max retries exceeded with url: /webhook/home-assistant (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7a1b8e953ce0>: Failed to establish a new connection: [Errno 113] Host is unreachable'))
+2025-03-20 14:57:23.433 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-20 14:57:44.937 WARNING (MainThread) [homeassistant.helpers.service] Referenced devices ef821ab8c649d25c633ba643d822cfcb are missing or not currently available
+2025-03-20 14:59:12.258 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-20 14:59:28.379 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
+2025-03-20 15:04:42.599 WARNING (MainThread) [homeassistant.components.wyoming.assist_satellite] Satellite has been disconnected. Reconnecting in 10 second(s)
