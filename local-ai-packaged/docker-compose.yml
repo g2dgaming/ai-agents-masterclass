@@ -11,19 +11,11 @@ networks:
   demo:
 
 x-n8n: &service-n8n
-  image: n8nio/n8n:latest
+  build:
+    context: ./n8n
   networks: ['demo']
   environment:
-    - DB_TYPE=postgresdb
-    - DB_POSTGRESDB_HOST=postgres
-    - DB_POSTGRESDB_USER=${POSTGRES_USER}
-    - DB_POSTGRESDB_PASSWORD=${POSTGRES_PASSWORD}
-    - N8N_DIAGNOSTICS_ENABLED=false
-    - N8N_PERSONALIZATION_ENABLED=false
-    - N8N_ENCRYPTION_KEY
-    - N8N_USER_MANAGEMENT_JWT_SECRET
-    - WEBHOOK_URL=http://192.168.1.36:5678
-    - VUE_APP_WEBHOOK_URL=http://192.168.1.36:5678
+    - N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE=true
   links:
     - postgres
 
@@ -99,6 +91,7 @@ services:
     restart: unless-stopped
     ports:
       - "5678:5678"
+      - "8888:8888"
     volumes:
       - n8n_storage:/home/node/.n8n
       - ./n8n/backup:/backup
@@ -107,6 +100,19 @@ services:
       - N8N_SECURE_COOKIE=${N8N_SECURE_COOKIE}
       - WEBHOOK_URL=http://192.168.1.36:5678
       - VUE_APP_WEBHOOK_URL=http://192.168.1.36:5678
+      - DB_TYPE=postgresdb
+      - DB_POSTGRESDB_HOST=postgres
+      - DB_POSTGRESDB_USER=${POSTGRES_USER}
+      - DB_POSTGRESDB_PASSWORD=${POSTGRES_PASSWORD}
+      - N8N_DIAGNOSTICS_ENABLED=false
+      - N8N_PERSONALIZATION_ENABLED=false
+      - N8N_ENCRYPTION_KEY
+      - N8N_USER_MANAGEMENT_JWT_SECRET
+      - WEBHOOK_URL=http://192.168.1.36:5678
+      - VUE_APP_WEBHOOK_URL=http://192.168.1.36:5678
+      - N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE=true
+      - N8N_COMMUNITY_PACKAGES_ENABLED=true
+      - N8N_COMMUNITY_NODES_ENABLED=true
     depends_on:
       postgres:
         condition: service_healthy
@@ -175,25 +181,16 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
-  qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:latest
-    container_name: qbittorrent
-    privileged: true
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC
-      - WEBUI_PORT=8080
-      - TORRENTING_PORT=6881
-    volumes:
-      - ./config:/config
-      - ./downloads:/downloads #optional
-    ports:
-      - 8080:8080
-      - 6881:6881
-      - 6881:6881/udp
-    restart: unless-stopped
+
+  ollama-cpu-alt:
+    image: ollama/ollama:latest
+    container_name: ollama-cpu-alt
     networks: ['demo']
+    restart: unless-stopped
+    ports:
+      - "11435:11435"
+    environment:
+      - OLLAMA_HOST=0.0.0.0:11435
   portainer:
     container_name: portainer
     image: portainer/portainer-ce
@@ -282,20 +279,6 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
-  plex:
-      image: linuxserver/plex:latest
-      container_name: plex
-      environment:
-        - PUID=1000
-        - PGID=1000
-        - VERSION=docker
-      volumes:
-        - ./config/plex:/config
-        - /home/samarth/samsung_t7/media:/media
-      ports:
-        - "32400:32400"
-      restart: unless-stopped
-      networks: ['demo']
 
   sonarr:
     image: linuxserver/sonarr:latest
@@ -305,8 +288,8 @@ services:
       - PGID=1000
     volumes:
       - ./config/sonarr:/config
-      - /home/samarth/samsung_t7/media/tvshows:/tv
-      - /home/samarth/samsung_t7/downloads:/downloads
+      - /mnt/ssd/tv:/tv # Correct path for TV shows
+      - /home/samarth/samsung_t7/media/tv:/downloads/tv # Downloads go directly to media folder
     ports:
       - "8989:8989"
     restart: unless-stopped
@@ -320,8 +303,8 @@ services:
       - PGID=1000
     volumes:
       - ./config/radarr:/config
-      - /home/samarth/samsung_t7/media/movies:/movies
-      - /home/samarth/samsung_t7/downloads:/downloads
+      - /home/samarth/samsung_t7/movies:/movies # Correct path for Movies
+      - /home/samarth/samsung_t7/media/movies:/downloads/movies # Downloads go directly to media folder
     ports:
       - "7878:7878"
     restart: unless-stopped
@@ -340,6 +323,41 @@ services:
     restart: unless-stopped
     networks: ['demo']
 
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    privileged: true
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - WEBUI_PORT=8080
+      - TORRENTING_PORT=6881
+    volumes:
+      - ./config/qbittorrent:/config
+      - /home/samarth/samsung_t7/media/movies:/downloads/movies # Ensures movies go directly to the media folder
+      - /home/samarth/samsung_t7/media/tv:/downloads/tv # Ensures TV shows go directly to the media folder
+    ports:
+      - 8080:8080
+      - 6881:6881
+      - 6881:6881/udp
+    restart: unless-stopped
+    networks: ['demo']
+
+  jellyfin:
+    image: linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ./config/jellyfin:/config
+      - /home/samarth/samsung_t7/movies:/movies # Correct path for Movies
+      - /mnt/ssd/tv:/tv # Jellyfin reads TV shows from here
+    ports:
+      - "8096:8096"
+    restart: unless-stopped
+    networks: ['demo']
 
   ollama-pull-llama-cpu:
     profiles: ["cpu"]
