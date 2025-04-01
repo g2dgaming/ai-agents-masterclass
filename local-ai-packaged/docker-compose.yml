@@ -287,7 +287,7 @@ services:
       - PUID=1000
       - PGID=1000
     volumes:
-      - /mnt/ssd/config:/config
+      - /mnt/ssd/config/sonarr:/config
       - /mnt/ssd/tv:/tv # Correct path for TV shows
       - /home/samarth/samsung_t7/media/tv:/downloads/tv # Downloads go directly to media folder
     ports:
