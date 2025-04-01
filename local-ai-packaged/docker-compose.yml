@@ -287,7 +287,7 @@ services:
       - PUID=1000
       - PGID=1000
     volumes:
-      - ./config/sonarr:/config
+      - /mnt/ssd/config:/config
       - /mnt/ssd/tv:/tv # Correct path for TV shows
       - /home/samarth/samsung_t7/media/tv:/downloads/tv # Downloads go directly to media folder
     ports:
@@ -302,7 +302,7 @@ services:
       - PUID=1000
       - PGID=1000
     volumes:
-      - ./config/radarr:/config
+      - /mnt/ssd/config/radarr:/config
       - /home/samarth/samsung_t7/movies:/movies # Correct path for Movies
       - /home/samarth/samsung_t7/media/movies:/downloads/movies # Downloads go directly to media folder
     ports:
@@ -317,7 +317,7 @@ services:
       - PUID=1000
       - PGID=1000
     volumes:
-      - ./config/prowlarr:/config
+      - /mnt/ssd/config/prowlarr:/config
     ports:
       - "9696:9696"
     restart: unless-stopped
@@ -326,7 +326,6 @@ services:
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
     container_name: qbittorrent
-    privileged: true
     environment:
       - PUID=1000
       - PGID=1000
@@ -334,7 +333,7 @@ services:
       - WEBUI_PORT=8080
       - TORRENTING_PORT=6881
     volumes:
-      - ./config/qbittorrent:/config
+      - /mnt/ssd/config/qbittorrent:/config
       - /home/samarth/samsung_t7/media/movies:/downloads/movies # Ensures movies go directly to the media folder
       - /home/samarth/samsung_t7/media/tv:/downloads/tv # Ensures TV shows go directly to the media folder
     ports:
@@ -351,7 +350,7 @@ services:
       - PUID=1000
       - PGID=1000
     volumes:
-      - ./config/jellyfin:/config
+      - /mnt/ssd/config/jellyfin:/config
       - /home/samarth/samsung_t7/movies:/movies # Correct path for Movies
       - /mnt/ssd/tv:/tv # Jellyfin reads TV shows from here
     ports:
