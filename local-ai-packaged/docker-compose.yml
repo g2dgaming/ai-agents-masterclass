@@ -295,6 +295,21 @@ services:
     restart: unless-stopped
     networks: ['demo']
 
+  bazarr:
+      image: linuxserver/bazarr:latest
+      container_name: bazarr
+      environment:
+        - PUID=1000
+        - PGID=1000
+      volumes:
+        - /mnt/ssd/config/bazarr:/config
+        - /mnt/ssd/tv:/tv
+        - /home/samarth/samsung_t7/movies:/movies
+      ports:
+        - "6767:6767"
+      restart: unless-stopped
+      networks: ['demo']
+
   radarr:
     image: linuxserver/radarr:latest
     container_name: radarr
