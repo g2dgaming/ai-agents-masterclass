@@ -325,6 +325,24 @@ services:
     restart: unless-stopped
     networks: ['demo']
 
+  flaresolverr:
+      image: ghcr.io/flaresolverr/flaresolverr:latest
+      container_name: flaresolverr
+      environment:
+        - PUID=1000
+        - PGID=1000
+        - TZ=Asia/Kolkata
+        - LOG_LEVEL=info
+        - LOG_HTML=false
+        - CAPTCHA_SOLVER=none
+      volumes:
+        - /mnt/ssd/config/flaresolverr:/config
+      ports:
+        - "8191:8191"
+      restart: unless-stopped
+      networks:
+        - demo
+
   prowlarr:
     image: linuxserver/prowlarr:latest
     container_name: prowlarr
