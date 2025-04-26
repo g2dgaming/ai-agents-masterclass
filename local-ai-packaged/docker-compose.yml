@@ -290,8 +290,10 @@ services:
       - PGID=1000
     volumes:
       - /mnt/ssd/config/sonarr:/config
-      - /mnt/ssd/tv:/tv # Correct path for TV shows
-      - /home/samarth/samsung_t7/media/tv:/downloads/tv # Downloads go directly to media folder
+      - /mnt/hdd/tv:/tv
+      - /home/samarth/samsung_t7/tv:/cold_storage_tv
+      - /mnt/ssd/tv:/cold_storage_tv2
+      - /mnt/ssd/tv_downloads:/downloads/tv
     ports:
       - "8989:8989"
     restart: unless-stopped
@@ -305,8 +307,8 @@ services:
         - PGID=1000
       volumes:
         - /mnt/ssd/config/bazarr:/config
-        - /mnt/ssd/tv:/tv
-        - /home/samarth/samsung_t7/movies:/movies
+        - /mnt/hdd/tv:/tv
+        - /mnt/hdd/movies:/movies
       ports:
         - "6767:6767"
       restart: unless-stopped
@@ -320,8 +322,8 @@ services:
       - PGID=1000
     volumes:
       - /mnt/ssd/config/radarr:/config
-      - /home/samarth/samsung_t7/movies:/movies # Correct path for Movies
-      - /home/samarth/samsung_t7/media/movies:/downloads/movies # Downloads go directly to media folder
+      - /mnt/hdd/movies:/movies
+      - /mnt/ssd/movies:/downloads/movies # Downloads go directly to media folder
     ports:
       - "7878:7878"
     restart: unless-stopped
@@ -373,8 +375,8 @@ services:
       - TORRENTING_PORT=6881
     volumes:
       - /mnt/ssd/config/qbittorrent:/config
-      - /home/samarth/samsung_t7/media/movies:/downloads/movies # Ensures movies go directly to the media folder
-      - /home/samarth/samsung_t7/media/tv:/downloads/tv # Ensures TV shows go directly to the media folder
+      - /mnt/ssd/movies:/downloads/movies # Ensures movies go directly to the media folder
+      - /mnt/ssd/tv_downloads:/downloads/tv # Ensures TV shows go directly to the media folder
     ports:
       - 8080:8080
       - 6881:6881
@@ -386,20 +388,22 @@ services:
     image: linuxserver/jellyfin:latest
     container_name: jellyfin
     runtime: nvidia
-    privileged: true
     environment:
       - PUID=1000
       - PGID=1000
       - NVIDIA_VISIBLE_DEVICES=all
       - NVIDIA_DRIVER_CAPABILITIES=compute,utility
     volumes:
-      - /mnt/ssd/config/jellyfin:/config
-      - /home/samarth/samsung_t7/movies:/movies # Correct path for Movies
-      - /mnt/ssd/tv:/tv # Jellyfin reads TV shows from here
+      - /mnt/ssd/config/jellyfin_new:/config
+      - /mnt/hdd/movies:/movies
+      - /mnt/hdd/tv:/tv
+      - /home/samarth/samsung_t7/tv:/cold_storage_tv
+      - /mnt/ssd/tv:/cold_storage_tv_2
     ports:
       - "8096:8096"
     restart: unless-stopped
     networks: ['demo']
+    privileged: true
     deploy:
       resources:
         reservations:
