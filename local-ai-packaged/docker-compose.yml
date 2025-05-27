@@ -7,6 +7,9 @@ volumes:
   whisper_cache:
   coqui_tts_storage:
   home-assistant_storage:
+  compreface-db-data:
+  compreface-minio-data:
+
 
 networks:
   demo:
@@ -43,6 +46,8 @@ services:
     networks: ['demo']
     restart: unless-stopped
     container_name: open-webui
+    environment:
+      - OPENWEBUI_TTS_API_URL
     ports:
       - "3000:8080"
     extra_hosts:
@@ -138,26 +143,15 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Asia/Kolkata
-      - WHISPER_MODEL=medium.en
+      - WHISPER_MODEL=small.en
       - WHISPER_LANG=en #optional
       - COMPUTE_TYPE=int8  # Use float16 for best GPU performance
       - CUDA_VISIBLE_DEVICES=0  # Use first GPU (change if needed)
     volumes:
       - whisper_cache:/config/models
-
-  web_scraper:
-      build:
-        context: ./web_scraper
-      container_name: web_scraper
-      restart: unless-stopped
-      ports:
-        - "6969:6969"
-      networks: ['demo']
-
   coqui-tts:
     container_name: coqui-tts
-    build:
-      context: ./TTS
+    image: ghcr.io/idiap/coqui-tts:latest
     privileged: true
     ports:
       - "5002:5002"
@@ -166,7 +160,9 @@ services:
       nvidia
     networks:
       - demo
-    entrypoint: ["python3", "TTS/server/server.py", "--model_name","tts_models/en/vctk/vits"]
+    entrypoint: ["python3", "TTS/server/server.py","--use_cuda"]
+    #entrypoint: ["bash", "-c", "echo Y | python3 TTS/server/server.py --model_name tts_models/multilingual/multi-dataset/xtts_v2 --use_cuda"]
+
     volumes:
       - coqui_tts_storage:/data
     environment:
@@ -178,6 +174,24 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
+  kokoro:
+    container_name: kokoro
+    privileged: true
+    runtime:
+      nvidia
+    ports:
+      - 8880:8880
+    image: ghcr.io/remsky/kokoro-fastapi-cpu:v0.2.1
+    restart: always
+    networks: ['demo']
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities:
+                - gpu
 
   portainer:
     container_name: portainer
@@ -210,6 +224,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+
   openwakeword:
     image: "wyoming-openwakeword"
     container_name: openwakeword
@@ -248,6 +263,120 @@ services:
       - satellite
       - coqui-tts
       - faster-whisper-stt
+  mqtt:
+      image: eclipse-mosquitto:2
+      container_name: mqtt
+      restart: unless-stopped
+      ports:
+        - "1883:1883"
+      volumes:
+        - ./mosquitto/config:/mosquitto/config
+        - ./mosquitto/data:/mosquitto/data
+        - ./mosquitto/log:/mosquitto/log
+
+  frigate:
+    image: ghcr.io/blakeblackshear/frigate:stable
+    container_name: frigate
+    privileged: true
+    restart: unless-stopped
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./frigate:/config
+      - /media/frigate:/media/frigate
+    ports:
+      - "5000:5000"
+    environment:
+      - FRIGATE_RTSP_PASSWORD
+
+
+
+  compreface-minio:
+    image: minio/minio:latest
+    container_name: compreface-minio
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    command: server /data
+    networks:
+      - demo
+    volumes:
+      - compreface-minio-data:/data
+    restart: unless-stopped
+
+  compreface:
+    image: exadel/compreface-fe:latest
+    container_name: compreface
+    environment:
+      REACT_APP_BACKEND_URL: http://compreface-api:3000
+    ports:
+      - "8002:80"  # Expose CompreFace UI/API on host port 8000
+    depends_on:
+      - compreface-api
+    restart: unless-stopped
+
+  compreface-core:
+      image: exadel/compreface-core:latest
+      restart: unless-stopped
+      container_name: compreface-core
+
+  compreface-admin:
+    image: exadel/compreface-admin:latest
+    container_name: compreface-admin
+    networks:
+      - demo
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_URL=${COMPREFACE_POSTGRES_URL}
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+
+  compreface-api:
+    image: exadel/compreface-api:latest
+    container_name: compreface-api
+    environment:
+       POSTGRES_URL: ${COMPREFACE_POSTGRES_URL}
+       MINIO_URL: http://compreface-minio:9000
+       MINIO_ACCESS_KEY: minioadmin
+       MINIO_SECRET_KEY: minioadmin
+       AWS_REGION: us-east-1
+       AWS_ENDPOINT: http://compreface-minio:9000
+       MINIO_SECURE: "false"
+       CORE_URL: http://compreface-core:8000
+    ports:
+      - "3002:3000"
+    depends_on:
+      - postgres
+      - compreface-minio
+      - compreface-core
+
+    restart: unless-stopped
+
+  double-take:
+    image: jakowenko/double-take
+    container_name: double-take
+    restart: unless-stopped
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./double-take:/app/.storage
+    environment:
+      - MQTT_HOST=mqtt
+      - MQTT_PORT=1883
+      - FRIGATE_URL=http://frigate:5000
+      - DETECTORS=compreface
+      - COMPREFACE_URL=http://compreface:8000
+      - COMPREFACE_API_KEY=your_api_key  # Create in UI and paste here
 
   # CPU Ollama
   ollama-cpu:
@@ -272,6 +401,8 @@ services:
     environment:
       - NVIDIA_VISIBLE_DEVICES=all
       - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+      - OLLAMA_KV_CACHE_TYPE=q8_0
+      - OLLAMA_FLASH_ATTENTION=1
     volumes:
       - /mnt/ssd/ollama:/root/.ollama
     deploy:
@@ -387,12 +518,11 @@ services:
     image: linuxserver/jellyfin:latest
     container_name: jellyfin
     runtime: nvidia
-    network_mode: "host"
     environment:
       - PUID=1000
       - PGID=1000
       - NVIDIA_VISIBLE_DEVICES=all
-      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+      - NVIDIA_DRIVER_CAPABILITIES=all
     volumes:
       - /mnt/ssd/config/jellyfin_new:/config
       - /mnt/hdd/movies:/movies
@@ -401,6 +531,7 @@ services:
       - /mnt/ssd/tv:/cold_storage_tv_2
     ports:
       - "8096:8096"
+      - "1900:1900"
     restart: unless-stopped
     networks: ['demo']
     privileged: true
